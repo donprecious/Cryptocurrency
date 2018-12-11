@@ -1,0 +1,231 @@
+body {
+    font-size: 14px;
+}
+body,h1,h2,h3,h4,h5,h6{
+    font-family: 'Roboto', sans-serif;
+    font-weight: 400;
+}
+.section-gaps{
+    padding: 50px 0;
+}
+.section-gaps.section-fix{
+    padding: 50px 0 30px;
+}
+.section-bg-alt{
+    background: #eaf3fc;
+}
+.section-bg-dark{
+    background: #253992;
+}
+.section-bg-dark .section-head{
+    color: #fff;
+}
+.section-bg-dark .demo-title2 a{
+    color: #fff;
+}
+.section-bg-dark .demo-title2 a:hover,.section-bg-dark .demo-item:hover a{
+    color: #34baff;
+}
+.demo-section-bg{
+    background: url(header-bg.jpg) no-repeat; 
+    background-size: cover;
+}
+.demo-section-bg2{
+    background: url(email-template.jpg) no-repeat; 
+    background-size: cover;
+}
+small, .small {
+    font-size: 90%;
+}
+a{
+    color: #304073;
+}
+a:hover,a:focus,a:active{
+    color: #2b56f5;
+}
+.demo-item{
+    margin-bottom: 30px;
+    max-width: 360px;
+    margin-left: auto;
+    margin-right: auto;
+}
+.demo-item:hover a{
+    color: #2b56f5;
+}
+.demo-item:hover .demo-image {
+    transform: translateY(-4px);
+    box-shadow: 0 5px 35px rgba(48,64,115,.2)
+}
+.demo-image{
+    background: #fff;
+    border: 2px solid #fff;
+    border-radius: 4px;
+    overflow: hidden;
+    box-shadow: 0 3px 30px rgba(48,64,115,.1);
+    transition: all .4s;
+    max-width: 360px;
+}
+.demo-title2{
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+.demo-title2 a{
+    padding: 10px 0 0;
+    display: block;
+}
+.demo-page-title .badge{
+    min-width: 0;
+    padding: 1px 5px;
+    font-size: 10px;
+    line-height: 13px;
+    margin-left: 4px;
+}
+.demo-page-list{
+    display: flex;
+    flex-wrap: wrap;
+}
+.demo-page-list li{
+    width: 50%;
+    line-height: 36px;
+    font-size: 12px;
+    text-transform: uppercase;
+    font-weight: 400;
+}
+.demo-page-list li .badge{
+    min-width: 0;
+    padding: 1px 5px;
+    font-size: 10px;
+    line-height: 13px;
+    margin-left: 4px;
+}
+.demo-page-list li a{
+    display: inline-block;
+    position: relative;
+}
+.demo-page-list li a:after{
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 1px;
+    background: #2b56f5;
+    content: '';
+    opacity: 0;
+    transition: all .3s;
+}
+.demo-page-list li a:hover:after{
+    opacity: 1;
+    bottom: 3px;
+}
+.demo-option-list{
+    display: flex;
+    flex-wrap: wrap;
+    margin:0 0 25px;
+}
+.demo-option-list li{
+    width: 50%;
+    line-height: 36px;
+    font-size: 13px;
+    font-weight: 400;
+}
+.header-text{}
+.header-text h1{
+    color: #fff;
+    font-size: 24px;
+    font-weight: 500;
+    line-height: 34px;
+}
+.header-text p{
+    font-size: 14px;
+    color: #fff;
+    line-height: 24px;
+    letter-spacing: 0;
+}
+.header-img{
+    max-width: 360px;
+}
+.demo-logo{
+    height: 40px;
+    display: inline-block;
+}
+.demo-logo img{
+    height: 100%;
+}
+.demo-navbar{
+    padding: 35px 0;
+}
+.demo-navbar-menu{
+    display: flex;
+    align-items: center;
+    margin: 0 -30px;
+}
+.demo-navbar-menu li{
+
+}
+.demo-navbar-menu li a:not(.btn){
+    display: inline-block;
+    padding: 10px 30px;
+    line-height: 20px;
+    font-size: 14px;
+    font-weight: 500;
+    color: #fff;
+    text-transform: uppercase;
+    letter-spacing: 0.01em;
+}
+.demo-navbar-menu li a:not(.btn):hover,
+.demo-navbar-menu li a:not(.btn):focus,
+.demo-navbar-menu li a:not(.btn):active{
+        color: #34baff;
+}
+.demo-navbar-menu li a.btn{
+    margin: 10px 30px;
+}
+
+.features-icon{
+    width: 60px;
+    width: 60px;
+    font-size: 30px;
+    margin-bottom: 18px;
+    display: inline-block;
+}
+.input-bordered.error{
+    border-color: #ff6876 !important;
+}
+.input-bordered + label.error{
+    display: none !important;
+}
+.demo-textarea{
+    height: 134px;
+}
+@media (min-width:576px){
+    .section-gaps{
+        padding: 80px 0;
+    }
+    .section-gaps.section-fix{
+        padding: 80px 0 45px;
+    }
+    .demo-image,
+    .demo-item,
+    .header-img{
+        max-width: 100%;
+    }
+    .demo-page-list li,
+    .demo-option-list li{
+        width: 33.33%;
+    }
+}
+@media (min-width:768px){
+    .header-text h1{
+        font-size: 44px;
+        line-height: 58px;
+    }
+    .header-text p{
+        font-size: 18px;
+        line-height: 32px;
+    }
+}
+@media (min-width:768px) and (max-width:991px){
+    .demo-page-list li{
+        width: 50%;
+    }
+}
