@@ -66,7 +66,8 @@
                                 </div>
                                 <div class="note note-plane note-danger">
                                     <em class="fas fa-info-circle"></em>
-                                    <p>In case you send a different amount, number of TWZ tokens will update accordingly.</p>
+
+                                    <p>In case you  send a different amount, number of TWZ tokens will update accordingly.</p>
                                 </div>
                             </div>
                         <div class="status status-empty">
