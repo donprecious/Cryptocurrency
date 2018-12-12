@@ -27,8 +27,9 @@ Route::get('/Transactions', "marketController@Transactions");
 
 Route::get('/user', 'UserController@Index');
 Route::get('/user/index', 'UserController@Index');
-
-
+Route::get('/user/PaymentInfo', function () {
+    return view("User.paymentinfo");
+});
 Route::post('user/fundAccount','UserController@FundAccount');
 
 
