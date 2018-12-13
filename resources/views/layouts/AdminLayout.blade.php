@@ -623,11 +623,7 @@
         <script src="{{asset('admin/assets/libs/morris.js/morris.min.js')}}"></script>
         <script src="{{asset('admin/assets/libs/DataTables/datatables.min.js')}}"></script>
         <script src="{{asset('admin/assets/js/pages/dashboards/dashboard3.js')}}"></script>
-        <script>
-            $(function () {
-                $('#cc-table').DataTable({});
-            });
-        </script>
+
     @show
 
 </body>

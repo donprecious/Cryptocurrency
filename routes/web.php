@@ -38,11 +38,6 @@ Route::get('/user/PaymentInfo', function () {
 
 Route::post('user/fundAccount','UserController@FundAccount');
 
-Route::get('/admin',function(){
-    return view("admin.dashboard");
-});
-
-Route::get('/admin/dashboard',"AdminController@dashboard");
 Auth::routes();
 
 // Route::get('/home', 'HomeController@index')->name('home');
