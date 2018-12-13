@@ -1,0 +1,47 @@
+/*
+  Theme Name: Bebert - Multipurpose Admin Template
+  Theme URL:  http://expandtheme.com/html/Bebert_admin
+  Author: Expandtheme
+  Author URI: http://expandtheme.com
+  Description: The Ultimate Multipurpose Admin Template.
+  Version: 1.0
+*/
+
+
+
+
+@media (max-width: 767px){
+    #active-users{
+        text-align: left;
+    }
+	.nav-link, .navbar {
+		padding: 0;
+	}
+	.card-body.calender-sidebar{
+		padding: 0 5px 10px;
+	}
+	.label{
+		white-space: nowrap;
+	}
+	.fc-day-grid-event .fc-content {
+		white-space: inherit;
+	}
+	.footer {
+		padding: 15px 20px;
+		text-align: center !important;
+	}
+	#main-wrapper[data-layout=vertical][data-sidebar-position=fixed] .topbar .top-navbar .navbar-header {
+		top: 0;
+	}
+	.nav-item.search-box{
+		display:none;
+	}
+	#main-wrapper[data-theme=light][data-navbarbg=skin6] .topbar .nav-toggler,
+	#main-wrapper[data-theme=light][data-navbarbg=skin6] .topbar .topbartoggler{
+		color: #000;
+	}
+	.page-wrapper>.container-fluid {
+		padding: 10px;
+	}
+	
+}

@@ -21,7 +21,6 @@ class CreateTokenOrdersTable extends Migration
             $table->string("currency_symbol");
             $table->string("status");
             $table->timestamps();
-
           //  $table->primary('order_id');
             $table->foreign('user_id')
             ->references('id')->on('users')

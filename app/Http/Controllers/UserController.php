@@ -32,4 +32,15 @@ class UserController extends Controller
             return view("User.paymentInfo")->with("data",$task->order);
         }
    }
+
+//    public function orderConfirmation($id){
+
+//    }
+   public function orderConfirmation(){
+        return view("user.orderConfirmation");
+   }
+
+   public function verifyPayment(){
+        return view("user.verifyPayment");
+   }
 }
