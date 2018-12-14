@@ -24,6 +24,7 @@ Route::resource('Market', 'marketController');
 
 Route::get('/Transactions', "marketController@Transactions");
 
+//UserController Get Request Route
 Route::get('/user', 'UserController@Index');
 Route::get('/user/index', 'UserController@Index');
 
@@ -35,8 +36,10 @@ Route::get('/user/verifyPayment', 'UserController@verifyPayment');
 Route::get('/user/PaymentInfo', function () {
     return view("User.paymentinfo");
 });
-
+//User controller post request route
 Route::post('user/fundAccount','UserController@FundAccount');
+Route::get('/admin', 'adminController@dashboard');
+
 
 Auth::routes();
 

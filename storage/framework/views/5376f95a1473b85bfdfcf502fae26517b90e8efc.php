@@ -9,14 +9,14 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <!-- Favicon icon -->
-    <link rel="icon" type="image/png" sizes="16x16" href="{{asset('adminTempTemp/assets/images/favicon.png')}}">
+    <link rel="icon" type="image/png" sizes="16x16" href="<?php echo e(asset('adminTempTemp/assets/images/favicon.png')); ?>">
     <title>Bebert - Multipurpose Admin Template</title>
     <!-- Custom CSS -->
-    <link href="{{asset('adminTemp/assets/libs/morris.js/morris.css')}}" rel="stylesheet">
-    <link href="{{asset('adminTemp/assets/libs/datatables.net-bs4/css/dataTables.bootstrap4.css')}}" rel="stylesheet">
+    <link href="<?php echo e(asset('adminTemp/assets/libs/morris.js/morris.css')); ?>" rel="stylesheet">
+    <link href="<?php echo e(asset('adminTemp/assets/libs/datatables.net-bs4/css/dataTables.bootstrap4.css')); ?>" rel="stylesheet">
     <!-- Custom CSS -->
-    <link href="{{asset('adminTemp/assets/css/theme.css')}}" rel="stylesheet">
-    <link href="{{asset('adminTemp/assets/css/responsive.css')}}" rel="stylesheet">
+    <link href="<?php echo e(asset('adminTemp/assets/css/theme.css')); ?>" rel="stylesheet">
+    <link href="<?php echo e(asset('adminTemp/assets/css/responsive.css')); ?>" rel="stylesheet">
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -50,17 +50,17 @@
                     <b class="logo-icon">
                         <!--You can put here icon as well // <i class="wi wi-sunset"></i> //-->
                         <!-- Dark Logo icon -->
-                        <img src="{{asset('adminTemp/assets/images/logo-icon.png')}}" alt="homepage" class="dark-logo" />
+                        <img src="<?php echo e(asset('adminTemp/assets/images/logo-icon.png')); ?>" alt="homepage" class="dark-logo" />
                         <!-- Light Logo icon -->
-                        <img src="{{asset('adminTemp/assets/images/logo-light-icon.png')}}" alt="homepage" class="light-logo" />
+                        <img src="<?php echo e(asset('adminTemp/assets/images/logo-light-icon.png')); ?>" alt="homepage" class="light-logo" />
                     </b>
                     <!--End Logo icon -->
                     <!-- Logo text -->
                     <span class="logo-text">
                         <!-- dark Logo text -->
-                        <img src="{{asset('adminTemp/assets/images/logo-text.png')}}" alt="homepage" class="dark-logo" />
+                        <img src="<?php echo e(asset('adminTemp/assets/images/logo-text.png')); ?>" alt="homepage" class="dark-logo" />
                         <!-- Light Logo text -->
-                        <img src="{{asset('adminTemp/assets/images/logo-light-text.png')}}" class="light-logo" alt="homepage'" />
+                        <img src="<?php echo e(asset('adminTemp/assets/images/logo-light-text.png')); ?>" class="light-logo" alt="homepage'" />
                     </span>
                 </a>
                 <!-- ============================================================== -->
@@ -198,25 +198,25 @@
                                     <div class="message-center message-body">
                                         <!-- Message -->
                                         <a href="javascript:void(0)" class="message-item">
-                                            <span class="user-img"> <img src="{{asset('adminTemp/assets/images/users/1.jpg')}}" alt="user" class="rounded-circle"> <span class="profile-status online pull-right"></span> </span>
+                                            <span class="user-img"> <img src="<?php echo e(asset('adminTemp/assets/images/users/1.jpg')); ?>" alt="user" class="rounded-circle"> <span class="profile-status online pull-right"></span> </span>
                                             <div class="mail-contnet">
                                                 <h5 class="message-title">Pavan kumar</h5> <span class="mail-desc">Just see the my adminTemp!</span> <span class="time">9:30 AM</span> </div>
                                         </a>
                                         <!-- Message -->
                                         <a href="javascript:void(0)" class="message-item">
-                                            <span class="user-img"> <img src="{{asset('adminTemp/assets/images/users/2.jpg')}}" alt="user" class="rounded-circle"> <span class="profile-status busy pull-right"></span> </span>
+                                            <span class="user-img"> <img src="<?php echo e(asset('adminTemp/assets/images/users/2.jpg')); ?>" alt="user" class="rounded-circle"> <span class="profile-status busy pull-right"></span> </span>
                                             <div class="mail-contnet">
                                                 <h5 class="message-title">Sonu Nigam</h5> <span class="mail-desc">I've sung a song! See you at</span> <span class="time">9:10 AM</span> </div>
                                         </a>
                                         <!-- Message -->
                                         <a href="javascript:void(0)" class="message-item">
-                                            <span class="user-img"> <img src="{{asset('adminTemp/assets/images/users/3.jpg')}}" alt="user" class="rounded-circle"> <span class="profile-status away pull-right"></span> </span>
+                                            <span class="user-img"> <img src="<?php echo e(asset('adminTemp/assets/images/users/3.jpg')); ?>" alt="user" class="rounded-circle"> <span class="profile-status away pull-right"></span> </span>
                                             <div class="mail-contnet">
                                                 <h5 class="message-title">Arijit Sinh</h5> <span class="mail-desc">I am a singer!</span> <span class="time">9:08 AM</span> </div>
                                         </a>
                                         <!-- Message -->
                                         <a href="javascript:void(0)" class="message-item">
-                                            <span class="user-img"> <img src="{{asset('adminTemp/assets/images/users/4.jpg')}}" alt="user" class="rounded-circle"')}}> <span class="profile-status offline pull-right"></span> </span>
+                                            <span class="user-img"> <img src="<?php echo e(asset('adminTemp/assets/images/users/4.jpg')); ?>" alt="user" class="rounded-circle"')}}> <span class="profile-status offline pull-right"></span> </span>
                                             <div class="mail-contnet">
                                                 <h5 class="message-title">Pavan kumar</h5> <span class="mail-desc">Just see the my adminTemp!</span> <span class="time">9:02 AM</span> </div>
                                         </a>
@@ -237,12 +237,12 @@
                     <!-- ============================================================== -->
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle text-muted waves-effect waves-dark pro-pic" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <img src="{{asset('adminTemp/assets/images/users/1.jpg')}}" alt="user" class="rounded-circle" width="31"><b>Steave Jobs <i class="fa fa-angle-down"></i></b>
+                            <img src="<?php echo e(asset('adminTemp/assets/images/users/1.jpg')); ?>" alt="user" class="rounded-circle" width="31"><b>Steave Jobs <i class="fa fa-angle-down"></i></b>
                         </a>
                         <div class="dropdown-menu dropdown-menu-right user-dd animated flipInY">
                             <span class="with-arrow"><span class="bg-primary"></span></span>
                             <div class="d-flex no-block align-items-center p-15 bg-primary text-white m-b-10">
-                                <div class=""><img src="{{asset('adminTemp/assets/images/users/1.jpg')}}" alt="user" class="img-circle" width="60"></div>
+                                <div class=""><img src="<?php echo e(asset('adminTemp/assets/images/users/1.jpg')); ?>" alt="user" class="img-circle" width="60"></div>
                                 <div class="m-l-10">
                                     <h4 class="m-b-0">Steave Jobs</h4>
                                     <p class=" m-b-0">varun@gmail.com</p>
@@ -565,7 +565,7 @@
             <!-- ============================================================== -->
             <!-- Start Page Content -->
             <!-- ============================================================== -->
-            @yield('content')
+            <?php echo $__env->yieldContent('content'); ?>
 
 
 
@@ -595,36 +595,36 @@
 
     <!-- .footer-bar -->
     <!-- JavaScript (include all script here) -->
-    @section('scripts')
+    <?php $__env->startSection('scripts'); ?>
    <!-- ============================================================== -->
         <!-- All Jquery -->
         <!-- ============================================================== -->
-        <script src="{{asset('adminTemp/assets/libs/jquery/dist/jquery.min.js')}}"></script>
+        <script src="<?php echo e(asset('adminTemp/assets/libs/jquery/dist/jquery.min.js')); ?>"></script>
         <!-- Bootstrap tether Core JavaScript -->
-        <script src="{{asset('adminTemp/assets/libs/popper.js/dist/umd/popper.min.js')}}"></script>
-        <script src="{{asset('adminTemp/assets/libs/bootstrap/dist/js/bootstrap.min.js')}}"></script>
+        <script src="<?php echo e(asset('adminTemp/assets/libs/popper.js/dist/umd/popper.min.js')); ?>"></script>
+        <script src="<?php echo e(asset('adminTemp/assets/libs/bootstrap/dist/js/bootstrap.min.js')); ?>"></script>
         <!-- apps -->
-        <script src="{{asset('adminTemp/assets/js/app.js')}}"></script>
+        <script src="<?php echo e(asset('adminTemp/assets/js/app.js')); ?>"></script>
         <!-- Theme settings -->
-        <script src="{{asset('adminTemp/assets/js/app.init.js')}}"></script>
-        <script src="{{asset('adminTemp/assets/js/app-style-switcher.js')}}"></script>
+        <script src="<?php echo e(asset('adminTemp/assets/js/app.init.js')); ?>"></script>
+        <script src="<?php echo e(asset('adminTemp/assets/js/app-style-switcher.js')); ?>"></script>
         <!-- slimscrollbar scrollbar JavaScript -->
-        <script src="{{asset('adminTemp/assets/libs/perfect-scrollbar/dist/perfect-scrollbar.jquery.min.js')}}"></script>
-        <script src="{{asset('adminTemp/assets/libs/sparkline/sparkline.js')}}"></script>
+        <script src="<?php echo e(asset('adminTemp/assets/libs/perfect-scrollbar/dist/perfect-scrollbar.jquery.min.js')); ?>"></script>
+        <script src="<?php echo e(asset('adminTemp/assets/libs/sparkline/sparkline.js')); ?>"></script>
         <!--Wave Effects -->
-        <script src="{{asset('adminTemp/assets/js/waves.js')}}"></script>
+        <script src="<?php echo e(asset('adminTemp/assets/js/waves.js')); ?>"></script>
         <!--Menu sidebar -->
-        <script src="{{asset('adminTemp/assets/js/sidebarmenu.js')}}"></script>
+        <script src="<?php echo e(asset('adminTemp/assets/js/sidebarmenu.js')); ?>"></script>
         <!--Theme JavaScript -->
-        <script src="{{asset('adminTemp/assets/js/theme.js')}}"></script>
+        <script src="<?php echo e(asset('adminTemp/assets/js/theme.js')); ?>"></script>
         <!--This page JavaScript -->
         <!--Morris JavaScript -->
-        <script src="{{asset('adminTemp/assets/libs/raphael/raphael.min.js')}}"></script>
-        <script src="{{asset('adminTemp/assets/libs/morris.js/morris.min.js')}}"></script>
-        <script src="{{asset('adminTemp/assets/libs/DataTables/datatables.min.js')}}"></script>
-        <script src="{{asset('adminTemp/assets/js/pages/dashboards/dashboard3.js')}}"></script>
+        <script src="<?php echo e(asset('adminTemp/assets/libs/raphael/raphael.min.js')); ?>"></script>
+        <script src="<?php echo e(asset('adminTemp/assets/libs/morris.js/morris.min.js')); ?>"></script>
+        <script src="<?php echo e(asset('adminTemp/assets/libs/DataTables/datatables.min.js')); ?>"></script>
+        <script src="<?php echo e(asset('adminTemp/assets/js/pages/dashboards/dashboard3.js')); ?>"></script>
 
-    @show
+    <?php echo $__env->yieldSection(); ?>
 
 </body>
 
