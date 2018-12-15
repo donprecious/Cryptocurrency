@@ -1,6 +1,4 @@
-@extends('layouts.userLayout')
-
-@section('content')
+<?php $__env->startSection('content'); ?>
 <div class="page-content">
         <div class="container">
             <div class="card content-area">
@@ -80,7 +78,7 @@
                                     <span class="data-details-docs-title">Front Side</span>
                                     <div class="data-doc-item data-doc-item-lg">
                                         <div class="data-doc-image">
-                                            <img src="{{asset('tokenWiz/images/passport-a-fornt.jpg')}}" alt="passport">
+                                            <img src="<?php echo e(asset('tokenWiz/images/passport-a-fornt.jpg')); ?>" alt="passport">
                                         </div>
                                         <ul class="data-doc-actions">
                                             <li>
@@ -96,7 +94,7 @@
                                     <span class="data-details-docs-title">Back Side</span>
                                     <div class="data-doc-item data-doc-item-lg">
                                         <div class="data-doc-image">
-                                    <img src="{{asset('tokenWiz/images/passport-a-back.jpg')}}" alt="passport">
+                                    <img src="<?php echo e(asset('tokenWiz/images/passport-a-back.jpg')); ?>" alt="passport">
                                         </div>
                                         <ul class="data-doc-actions">
                                             <li>
@@ -120,13 +118,13 @@
         <!-- .container -->
     </div>
 
-@endsection
+<?php $__env->stopSection(); ?>
 
-@section('scripts')
- @parent
+<?php $__env->startSection('scripts'); ?>
+ ##parent-placeholder-16728d18790deb58b3b8c1df74f06e536b532695##
 
- <script src="{{ asset('/tokenWiz/assets/js/scripta5f5.js?ver=102')}}"></script>
- <!-- <script src="{{ asset('/js/app/formsubmit.js')}}"></script> -->
+ <script src="<?php echo e(asset('/tokenWiz/assets/js/scripta5f5.js?ver=102')); ?>"></script>
+ <!-- <script src="<?php echo e(asset('/js/app/formsubmit.js')); ?>"></script> -->
   <script>
       $(function(){
           $("#openFundBtn").click(function(event){
@@ -134,5 +132,7 @@
           });
       });
   </script>
-@endsection
+<?php $__env->stopSection(); ?>
 
+
+<?php echo $__env->make('layouts.userLayout', \Illuminate\Support\Arr::except(get_defined_vars(), array('__data', '__path')))->render(); ?>

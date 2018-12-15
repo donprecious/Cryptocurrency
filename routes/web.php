@@ -28,17 +28,20 @@ Route::get('/Transactions', "marketController@Transactions");
 Route::get('/user', 'UserController@Index');
 Route::get('/user/index', 'UserController@Index');
 
-// Route::get('/user/orderConfirmation/{id}', 'UserController@orderConfirmation');
-Route::get('/user/orderConfirmation', 'UserController@orderConfirmation');
+Route::get('/user/orderConfirmation/{orderid}', 'UserController@orderConfirmation');
 
 //Route::get('/user/verifyPayment{id}', 'UserController@verifyPayment');
-Route::get('/user/verifyPayment', 'UserController@verifyPayment');
+Route::get('/user/VerifyPayment/{orderid}', 'UserController@verifyPayment');
 Route::get('/user/PaymentInfo', function () {
     return view("User.paymentinfo");
 });
+
 //User controller post request route
 Route::post('user/fundAccount','UserController@FundAccount');
+
+//admin get controllers
 Route::get('/admin', 'adminController@dashboard');
+Route::get('/admin/confirmations','adminController@confirmations');
 
 
 Auth::routes();

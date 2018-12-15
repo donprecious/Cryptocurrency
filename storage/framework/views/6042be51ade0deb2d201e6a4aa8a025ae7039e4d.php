@@ -1,13 +1,11 @@
-@extends('layouts.userLayout')
-
-@section('content')
+<?php $__env->startSection('content'); ?>
 <div class="page-header page-header-kyc">
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-lg-8 col-xl-7 text-center">
                 <h2 class="page-title">Account Fund Request</h2>
 
-                <p class="large">You have request to fund your account with {{$data->quantity}} {{$data->currency_symbol}}, </p>
+                <p class="large">You have request to fund your account with <?php echo e($data->quantity); ?> <?php echo e($data->currency_symbol); ?>, </p>
             </div>
         </div>
     </div>
@@ -23,7 +21,7 @@
                             <div class="popup-body">
                                     <h4 class="popup-title">Confirmation Your Payment</h4>
                                     <p class="lead text-primary">Your Order no.
-                                        <strong>{{$data->order_id}}</strong> has been placed successfully. </p>
+                                        <strong><?php echo e($data->order_id); ?></strong> has been placed successfully. </p>
                                     <p>The tokens balance will appear in your account only after you transaction has been confirmed by
                                         our team.</p>
                                     <p>
@@ -51,7 +49,7 @@
                                 <!-- .input-item -->
                                 <ul class="d-flex flex-wrap align-items-center guttar-30px">
                                     <li>
-                                    <a href="/user/VerifyPayment/{{$data->order_id}}" data-dismiss="modal" data-toggle="modal" data-target="#pay-review" class="btn btn-primary">Confirm Payment</a>
+                                    <a href="/user/orderConfirmation/<?php echo e($data->order_id); ?>" data-dismiss="modal" data-toggle="modal" data-target="#pay-review" class="btn btn-primary">Confirm Payment</a>
                                     </li>
                                     <li class="pdt-1x pdb-1x">
                                         <a href="#" data-dismiss="modal" data-toggle="modal" data-target="#pay-online" class="link link-primary">Make Online Payment</a>
@@ -75,7 +73,7 @@
                                 <em class="ti ti-files"></em>
                             </div>
                             <span class="status-text text-dark">Confirm your payment</span>
-                            <a href="/user/VerifyPayment/{{$data->order_id}}" class="btn btn-primary">Click here to make confrimation</a>
+                            <a href="kyc-form.html" class="btn btn-primary">Click here to make confrimation</a>
                         </div>
                     </div>
                 </div>
@@ -89,13 +87,13 @@
     </div>
     <!-- .container -->
 </div>
-@endsection
+<?php $__env->stopSection(); ?>
 
-@section('scripts')
- @parent
+<?php $__env->startSection('scripts'); ?>
+ ##parent-placeholder-16728d18790deb58b3b8c1df74f06e536b532695##
 
- <script src="{{ asset('/tokenWiz/assets/js/scripta5f5.js?ver=102')}}"></script>
- <!-- <script src="{{ asset('/js/app/formsubmit.js')}}"></script> -->
+ <script src="<?php echo e(asset('/tokenWiz/assets/js/scripta5f5.js?ver=102')); ?>"></script>
+ <!-- <script src="<?php echo e(asset('/js/app/formsubmit.js')); ?>"></script> -->
   <script>
       $(function(){
           $("#openFundBtn").click(function(event){
@@ -103,4 +101,6 @@
           });
       });
   </script>
-@endsection
+<?php $__env->stopSection(); ?>
+
+<?php echo $__env->make('layouts.userLayout', \Illuminate\Support\Arr::except(get_defined_vars(), array('__data', '__path')))->render(); ?>

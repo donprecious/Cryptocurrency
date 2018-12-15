@@ -13,6 +13,7 @@ class TokenOrdersModel{
     }
 
     public function MakeOrder($userid,$quantity,$is_crypto,$currency_symbol){
+
         try{
             $user =new UserModel();
             if($user->FindbyId($userid)){
@@ -45,8 +46,18 @@ class TokenOrdersModel{
             "message"=>"Error Occured: ",
             ];
         }
+
     }
 
+    public  function GetOrders(){
+        try {
+            //code...
+            $transaction = tokenOrders::all();
+            return $transaction();
+        } catch (\Throwable $th) {
+            //throw $th;
+        }
+    }
 
 
 

@@ -7,7 +7,8 @@ use Illuminate\Auth\Middleware\Authenticate;
 use Illuminate\Support\Facades\Auth;
 
 use App\Infastuture\UsdBalanceModel;
-
+use App\User;
+use App\tokenOrders;
 class UserController extends Controller
 {
     //
@@ -33,14 +34,22 @@ class UserController extends Controller
         }
    }
 
-//    public function orderConfirmation($id){
-
-//    }
-   public function orderConfirmation(){
-        return view("user.orderConfirmation");
+   public function orderConfirmation($orderid){
+        $userid = Auth::id();
+        $order =  tokenOrders::where('user_id',$userid)->where("order_id",$orderid);
+        if($order != null){
+            return view("user.orderConfirmation")->with("order",$order);
+        }
    }
+//    public function orderConfirmation($orderId){
+//         return view("user.orderConfirmation");
+//    }
 
-   public function verifyPayment(){
-        return view("user.verifyPayment");
+   public function verifyPayment($orderid){
+    $userid = Auth::id();
+    $order =  tokenOrders::where('user_id',$userid)->where('order_id',$orderid)->first();
+    if($order->count()){
+        return view("user.verifyPayment")->with("order",$order);
+    }
    }
 }

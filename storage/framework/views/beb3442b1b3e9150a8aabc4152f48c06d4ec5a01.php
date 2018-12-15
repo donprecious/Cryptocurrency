@@ -1,11 +1,9 @@
-@extends('layouts.userLayout')
-
-@section('content')
+<?php $__env->startSection('content'); ?>
 <div class="page-header page-header-kyc">
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-lg-8 col-xl-7 text-center">
-                <h2 class="page-title">Submit Proof of payment order  # {{$order->order_id }}</h2>
+                <h2 class="page-title">Verify payment order no # <?php echo e($order->order_id); ?></h2>
 
                 </div>
             </div>
@@ -75,13 +73,13 @@
         </div>
         <!-- .container -->
     </div>
-@endsection
+<?php $__env->stopSection(); ?>
 
-@section('scripts')
- @parent
+<?php $__env->startSection('scripts'); ?>
+ ##parent-placeholder-16728d18790deb58b3b8c1df74f06e536b532695##
 
- <script src="{{ asset('/tokenWiz/assets/js/scripta5f5.js?ver=102')}}"></script>
- <!-- <script src="{{ asset('/js/app/formsubmit.js')}}"></script> -->
+ <script src="<?php echo e(asset('/tokenWiz/assets/js/scripta5f5.js?ver=102')); ?>"></script>
+ <!-- <script src="<?php echo e(asset('/js/app/formsubmit.js')); ?>"></script> -->
   <script>
       $(function(){
           $("#openFundBtn").click(function(event){
@@ -89,5 +87,7 @@
           });
       });
   </script>
-@endsection
+<?php $__env->stopSection(); ?>
 
+
+<?php echo $__env->make('layouts.userLayout', \Illuminate\Support\Arr::except(get_defined_vars(), array('__data', '__path')))->render(); ?>
