@@ -132,7 +132,7 @@
      var L = e(".upload-zone");
      L.length > 0 && (Dropzone.autoDiscover = !1, L.each(function () {
          e(this).addClass("dropzone").dropzone({
-             url: "/images"
+            //  url: "/images"
          })
      }));
      var z = e(".image-popup");

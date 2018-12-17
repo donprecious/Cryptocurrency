@@ -84,7 +84,7 @@
                                     <tr>
                                         <th>Cryptocurrency</th>
                                         <th>Price/Usd</th>
-                                        <th class="d-none d-sm-table-cell tnx-date">Date</th>
+
                                         <th class="tnx-type">
                                             <div class="tnx-type-text"></div>
                                         </th>
@@ -93,51 +93,37 @@
                                 </thead>
                                 <!-- thead -->
                                 <tbody>
-                                    <tr>
-                                        <td>
-                                            <div class="d-flex align-items-center">
-                                                <div class="data-state data-state-pending"></div>
-                                                <span class="lead">Bit Coin</span>
-                                            </div>
-                                        </td>
-                                        <td>
-                                            <span>
-                                                <span class="lead">$3,605</span>
+                                      <!--
+                                      
 
-                                        </td>
-                                        <td class="d-none d-sm-table-cell tnx-date">
-                                            <span class="sub sub-s2">2018-08-24 10:20 PM</span>
-                                        </td>
-                                        <td class="tnx-type">
-                                            <span class="tnx-type-md badge badge-outline badge-success badge-md">Order</span>
 
-                                        </td>
-                                    </tr>
-                                    <!-- tr -->
+                                  <!--
+
                                     <tr>
-                                        <td>
-                                            <div class="d-flex align-items-center">
-                                                <div class="data-state data-state-progress"></div>
-                                                <span class="lead">8,052</span>
-                                            </div>
-                                        </td>
-                                        <td>
-                                            <span>
-                                                <span class="lead">0.165</span>
-                                                <span class="sub">BTC
-                                                    <em class="fas fa-info-circle" data-toggle="tooltip" data-placement="bottom"
-                                                        data-original-title="1 BTC = 5450.54 USD"></em>
+                                            <td>
+                                                <div class="d-flex align-items-center">
+                                                    <div class="data-state data-state-progress"></div>
+                                                    <span class="lead">8,052</span>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <span>
+                                                    <span class="lead">0.165</span>
+                                                    <span class="sub">BTC
+                                                        <em class="fas fa-info-circle" data-toggle="tooltip" data-placement="bottom"
+                                                            data-original-title="1 BTC = 5450.54 USD"></em>
+                                                    </span>
                                                 </span>
-                                            </span>
-                                        </td>
-                                        <td class="d-none d-sm-table-cell tnx-date">
-                                            <span class="sub sub-s2">2018-08-24 10:20 PM</span>
-                                        </td>
-                                        <td class="tnx-type">
-                                            <span class="tnx-type-md badge badge-outline badge-warning badge-md">Bonus</span>
-                                            <span class="tnx-type-sm badge badge-sq badge-outline badge-warning badge-md">B</span>
-                                        </td>
-                                    </tr>
+                                            </td>
+                                            <td class="d-none d-sm-table-cell tnx-date">
+                                                <span class="sub sub-s2">2018-08-24 10:20 PM</span>
+                                            </td>
+                                            <td class="tnx-type">
+                                                <span class="tnx-type-md badge badge-outline badge-warning badge-md">Bonus</span>
+                                                <span class="tnx-type-sm badge badge-sq badge-outline badge-warning badge-md">B</span>
+                                            </td>
+                                        </tr>
+                                -->
                                     <!-- tr -->
                                     <tr>
                                         <td>
@@ -180,24 +166,27 @@
                             </div>
                             <div class="input-item input-with-label">
                                     <label class="input-item-label">Select Token</label>
-                                    <select class="select select-block select-bordered">
-                                        <option value="option-one">Btc</option>
-                                        <option value="option-two">Ltc</option>
-                                        <option value="option-three">BTH</option>
+                                    <!--
+                                        
+                                    -->
+                                    <select class="select select-block select-bordered" id="selectCurrency">
+                                        <option value="option-one" data-price="3245.43958" data-symbol="BTC">BTC - BIT-COIN</option>
+                                        <option value="option-one" data-price="49038.43958" data-symbol="LTC">Ltc - litecoin</option>
+                                        <option value="option-one" data-price="135.43958" data-symbol="BTC">ETH - ethrum</option>
                                     </select>
                             </div>
                             <div class="row">
-                                    <div class="col-xl-6 col-sm-6">
+                                    <div class="col-12 col-sm-12">
                                             <div class="input-item input-with-label">
                                                 <label class="input-item-label ucap text-exlight">Enter Amount in USD</label>
-                                                <input class="input-bordered" type="text" placeholder="100">
+                                                <input class="input-bordered" name='txtAmount' id="txtAmount" type="text" placeholder="100">
                                                 <span class="input-note">Enter the amount to calculate the token for the cryptocurrency</span>
                                             </div>
                                         </div>
-                                        <div class="col-xl-6 col-sm-6">
+                                        <div class="col-12 col-sm-12">
                                                 <div class="input-item input-with-label">
                                                     <label class="input-item-label ucap text-exlight">Input token of cryptocurrency </label>
-                                                    <input class="input-bordered" type="text">
+                                                    <input class="input-bordered" name='txtQuanity' id="txtQuanity"  type="text">
                                                     <span class="input-note">Enter the quantity of cryptocurrency</span>
                                                 </div>
                                        </div>
@@ -207,7 +196,7 @@
                                 <span class="note-text text-light">Amount calculated based current tokens price</span>
                             </div>
                             <div class="token-buy">
-                                <a href="#" class="btn btn-primary">Buy Tokens</a>
+                                <button type="button" id="btnBuyToken"  class="btn btn-primary">Buy Tokens <img id="img_buy" width="20" height="20" class="img-fluid hide-loader" src="<?php echo e(asset('img/ajax/loading4.gif')); ?>"></a>
                             </div>
                         </div>
                     </div>
@@ -331,13 +320,19 @@
  ##parent-placeholder-16728d18790deb58b3b8c1df74f06e536b532695##
 
  <script src="<?php echo e(asset('/tokenWiz/assets/js/scripta5f5.js?ver=102')); ?>"></script>
+
  <!-- <script src="<?php echo e(asset('/js/app/formsubmit.js')); ?>"></script> -->
+ <script src="<?php echo e(asset('/js/app/buyandsell.js')); ?>"></script>
   <script>
+
+
       $(function(){
           $("#openFundBtn").click(function(event){
             $("#fundAccountModal").modal();
           });
       });
+
+
   </script>
 <?php $__env->stopSection(); ?>
 

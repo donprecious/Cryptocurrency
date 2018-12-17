@@ -17,6 +17,7 @@
     <!-- Custom styles for this template -->
     <link rel="stylesheet" href="<?php echo e(asset('tokenWiz/assets/css/style.css')); ?>" id="layoutstyle">
     <link rel="stylesheet" href="<?php echo e(asset('tokenWiz/assets/css/stylea5f5.css?ver=102')); ?>" id="layoutstyle">
+    <link rel="stylesheet" href="<?php echo e(asset('css/site.css')); ?>">
     <!-- <script>
         (function (i, s, o, g, r, a, m) {
             i['GoogleAnalyticsObject'] = r;

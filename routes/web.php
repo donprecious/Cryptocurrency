@@ -38,11 +38,16 @@ Route::get('/user/PaymentInfo', function () {
 
 //User controller post request route
 Route::post('user/fundAccount','UserController@FundAccount');
+Route::post('/user/buytoken', "UserController@BuyToken");
 
 //admin get controllers
 Route::get('/admin', 'adminController@dashboard');
 Route::get('/admin/confirmations','adminController@confirmations');
 
+Route::post('/upload/images', [
+    'uses'   =>  'ImageUploadController@uploadImages',
+    'as'     =>  'uploadImage'
+]);
 
 Auth::routes();
 

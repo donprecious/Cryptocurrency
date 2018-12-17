@@ -4,6 +4,7 @@ namespace App\Infastuture;
 use App\tokenOrders;
 use App\CryptoBalance;
 use App\Infastuture\UserModel;
+use
 class TokenOrdersModel{
 
 
@@ -60,7 +61,24 @@ class TokenOrdersModel{
     }
 
 
+    //Function checks if a USER HAS THAT ORDER
+    public function UserHasOrder($user_id, $order_id){
+        try {
+            //code...
+            $userOrder = tokenOrders::where("user_id", '=',$user_id)->where('order_id', $order_id)->get();
+            if(count($userOrder)){
+                return true;
+            }
+            return false;
+        } catch (\Throwable $th) {
+            //throw $th;
+            return false;
+        }
+    }
 
+    public function calculateTokenQuatity($symbol, $quantity){
+        //get current rate of the currency symbol
+    }
 
 
 }

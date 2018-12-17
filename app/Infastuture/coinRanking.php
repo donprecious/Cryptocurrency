@@ -52,6 +52,14 @@ use Psr\Http\Message\ResponseInterface;
 
         }
 
+    public function GetSpecificCurrencyData($symbol){
+        $coins = $this->GetMarketData()->data->coins;
+        foreach ($coins as $coin) {
+            if($coins->coin == $symbol){
+                return $coin;
+            }
+        }
+    }
 
 
 

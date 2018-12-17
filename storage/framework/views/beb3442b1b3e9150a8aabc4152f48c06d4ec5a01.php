@@ -3,7 +3,7 @@
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-lg-8 col-xl-7 text-center">
-                <h2 class="page-title">Verify payment order no # <?php echo e($order->order_id); ?></h2>
+                <h2 class="page-title">Submit Proof of payment order  # <?php echo e($order->order_id); ?></h2>
 
                 </div>
             </div>
@@ -29,32 +29,56 @@
                             </div>
                             <!-- .step-head -->
                             <div class="form-step-fields card-innr">
-
-                                <div class="gaps-2x"></div>
-
+                                    <form enctype="multipart/form-data" method="post" action="<?php echo e(action('UserController@FundAccount')); ?>">
                                 <!-- .nav-tabs-line -->
                                 <div class="tab-content" id="myTabContent">
                                     <div class="tab-pane fade show active" id="passport">
+                                        <?php if(count($errors)>0): ?>
+                                            <?php $__currentLoopData = $errors->all(); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $error): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                            <div class="alert alert-danger">
+                                                <?php echo e($error); ?>
 
-                                        <div class="gaps-2x"></div>
-                                        <h5 class="font-mid">Upload File Herey</h5>
+                                            </div>
+                                            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                                        <?php endif; ?>
+                                        <!-- Add Error Here  -->
+
+                                        <?php if(session()->has('status')): ?>
+                                            <div class="alert alert-info" role="alert">
+                                                <?php echo e(session()->get('status')); ?>
+
+                                            </div>
+                                          <?php endif; ?>
+
+                                        <h5 class="font-mid">Upload File </h5>
                                         <div class="row align-items-center">
+
                                                 <div class="col-md-12">
-                                                        <div class="upload-box">
-                                                                <div class="upload-zone">
-                                                                    <div class="dz-message" data-dz-message>
-                                                                        <span class="dz-message-text">Drag and drop file</span>
-                                                                        <span class="dz-message-or">or</span>
-                                                                        <button class="btn btn-primary">SELECT</button>
-                                                                    </div>
+                                                    <!--
+                                                        <div class="input-item input-with-label">
+                                                                <label class="input-item-label">Picture Upload</label>
+                                                                <div class="relative">
+                                                                    <em class="input-file-icon fas fa-upload"></em>
+                                                                    <input type="file" name="file_upload" class="input-file" id="file_upload">
+                                                                    <label for="file-01">Choose a file</label>
                                                                 </div>
+                                                        </div>
+                                                    -->
+                                                        <input type="file" class="form-control input-file">
+                                                                <div class="input-item input-with-label">
+                                                                        <label class="input-item-label"></label>
+                                                                        <textarea class="input-bordered input-textarea" name="description" placeholder="Brief detail concering the file"></textarea>
+                                                                </div>
+                                                            <input type="hidden" value="<?php echo e(Auth::id()); ?>" name="user_id" id="user_id">
+                                                            <input type="hidden" value="<?php echo e($order->order_id); ?>" name="order_id" id="order_id">
+                                                                <button class="btn btn-primary" type="submit">Send</button>
+
+
+
                                                             </div>
-                                                            <div class="input-item input-with-label">
-                                                                    <label class="input-item-label"></label>
-                                                                    <textarea class="input-bordered input-textarea" placeholder="Brief detail concering the file"></textarea>
-                                                            </div>
-                                                            <button class="btn btn-primary"> Send</button>
-                                                </div>
+
+
+
 
 
                                         </div>
@@ -62,6 +86,7 @@
 
                                     <!-- .tab-pane -->
                                 </div>
+                            </form>
                                 <!-- .tab-content -->
                             </div>
                             <!-- .step-fields -->

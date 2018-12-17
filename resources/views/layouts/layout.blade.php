@@ -102,7 +102,6 @@
 	<!-- end header -->
     @yield('content')
 
-
     <!-- JS -->
     <script src="{{asset('js/jquery-2.2.4.min.js')}}"></script>
 	<script src="{{asset('js/owl.carousel.min.js')}}"></script>

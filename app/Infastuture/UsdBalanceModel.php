@@ -3,10 +3,12 @@ namespace App\Infastuture;
 
 use App\usdBalance;
 use App\CryptoBalance;
+
 use App\Infastuture\UserModel;
+
 class UsdBalanceModel{
 
-
+    static public $errorMessage;
     public function __construct()
     {
 
@@ -27,6 +29,30 @@ class UsdBalanceModel{
         catch(Exception $ex){
             return false;
         }
+    }
+
+    public function GetUsdBalance($userid){
+        $userBalance = usdBalance::where("user_id",$userid)->select("Balance_usd")->get();
+        if(count($userBalance)){
+            return $userBalance;
+        }
+        return null;
+    }
+
+    public function DeductUsdBalance($userid, $amount){
+        try{
+            $balance = $this->GetUsdBalance($userid);
+            $balance = $balance - $amount;
+            $userBalance = usdBalance::find("user_id",$userid);
+            $userBalance->balance = $balance;
+            $userBalance->save();
+            return true;
+        }
+        catch(Exception $ex){
+
+           return false;
+        }
+
     }
 
     public function AddCryptoBalance($userid,$balance, $crypto_Type){

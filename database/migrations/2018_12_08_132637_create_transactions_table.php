@@ -20,6 +20,7 @@ class CreateTransactionsTable extends Migration
             $table->string('cryptoType');
             $table->decimal('token');
             $table->decimal('price_usd');
+            $table->decimal("price_per_coin_usd");
             $table->string('status');
             $table->timestamps();
 
