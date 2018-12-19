@@ -22,6 +22,7 @@ class UsdBalanceModel{
                 $userBal->user_id = $userid;
                 $userBal->Balance_usd = $balance;
                 $userBal->save();
+
                 return true;
             }
 
@@ -32,19 +33,21 @@ class UsdBalanceModel{
     }
 
     public function GetUsdBalance($userid){
-        $userBalance = usdBalance::where("user_id",$userid)->select("Balance_usd")->get();
-        if(count($userBalance)){
-            return $userBalance;
-        }
-        return null;
+        $userBalance = usdBalance::where("user_id",$userid)->first();
+        // if(!$userBalance->isEmpty()){
+        //     return $userBalance->Balance_Usd;
+        // }
+        //
+        return $userBalance->Balance_usd;
+      //  return null;
     }
 
     public function DeductUsdBalance($userid, $amount){
         try{
             $balance = $this->GetUsdBalance($userid);
             $balance = $balance - $amount;
-            $userBalance = usdBalance::find("user_id",$userid);
-            $userBalance->balance = $balance;
+            $userBalance = usdBalance::find($userid);
+            $userBalance->Balance_usd = $balance;
             $userBalance->save();
             return true;
         }
@@ -55,23 +58,21 @@ class UsdBalanceModel{
 
     }
 
-    public function AddCryptoBalance($userid,$balance, $crypto_Type){
+    public function CreditBalance($userid, $amount){
         try{
-            $user =new UserModel();
-            if($user->FindbyId($userid)){
-                $userBal = new CryptoBalance();
-                $userBal->user_id = $userid;
-                $userBal->crypto_balance = $balance;
-                $userBal->cryptocurrency_type = $crypto_Type;
-                $userBal->save();
-                return true;
-            }
-
+            $balance = $this->GetUsdBalance($userid);
+            $balance = $balance + $amount;
+            $userBalance = usdBalance::find($userid);
+            $userBalance->Balance_usd = $balance;
+            $userBalance->save();
+            return true;
         }
         catch(Exception $ex){
-            return false;
+
+           return false;
         }
     }
+
 
 
 

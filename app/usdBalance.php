@@ -8,7 +8,7 @@ class usdBalance extends Model
 {
     //
     protected $table = 'usdbalances';
-
+    protected $primaryKey = 'user_id';
     public $timestamps = false;
 
     public function User(){

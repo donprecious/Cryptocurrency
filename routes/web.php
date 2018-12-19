@@ -29,7 +29,7 @@ Route::get('/user', 'UserController@Index');
 Route::get('/user/index', 'UserController@Index');
 
 Route::get('/user/orderConfirmation/{orderid}', 'UserController@orderConfirmation');
-
+Route::get('/user/mytokens',"UserController@MyTokens");
 //Route::get('/user/verifyPayment{id}', 'UserController@verifyPayment');
 Route::get('/user/VerifyPayment/{orderid}', 'UserController@verifyPayment');
 Route::get('/user/PaymentInfo', function () {
@@ -39,7 +39,7 @@ Route::get('/user/PaymentInfo', function () {
 //User controller post request route
 Route::post('user/fundAccount','UserController@FundAccount');
 Route::post('/user/buytoken', "UserController@BuyToken");
-
+Route::post('/user/selltoken', "UserController@SellToken");
 //admin get controllers
 Route::get('/admin', 'adminController@dashboard');
 Route::get('/admin/confirmations','adminController@confirmations');

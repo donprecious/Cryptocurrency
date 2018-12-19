@@ -103,7 +103,6 @@
 	<!-- end header -->
     <?php echo $__env->yieldContent('content'); ?>
 
-
     <!-- JS -->
     <script src="<?php echo e(asset('js/jquery-2.2.4.min.js')); ?>"></script>
 	<script src="<?php echo e(asset('js/owl.carousel.min.js')); ?>"></script>

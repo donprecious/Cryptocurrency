@@ -191,7 +191,7 @@
                     <div class="token-calculator card card-full-height">
                         <div class="card-innr">
                             <div class="card-head">
-                                <h4 class="card-title">Token Calculation</h4>
+                                <h4 class="card-title">Buy Token</h4>
                                 <p class="card-title-text">Enter amount to calculate token.</p>
                             </div>
                             <div class="input-item input-with-label">
@@ -228,7 +228,7 @@
                                 <span class="note-text text-light">Amount calculated based current tokens price</span>
                             </div>
                             <div class="token-buy">
-                                <button type="button" id="btnBuyToken"  class="btn btn-primary">Buy Tokens <img id="img_buy" width="20" height="20" class="img-fluid hide-loader" src="{{asset('img/ajax/loading4.gif')}}"></a>
+                                <button type="button" id="btnBuyToken"  class="btn btn-primary btn-block">Buy Tokens <img id="img_buy" width="15" height="15" class="img-fluid hide-loader" src="{{asset('img/ajax/loading4.gif')}}"></button>
                             </div>
                         </div>
                     </div>
@@ -345,6 +345,25 @@
                 <!-- .modal-content -->
             </div>
             <!-- .modal-dialog -->
+        </div>
+        <div id="modalNotice" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" style="display: none;" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title" id="myModalLabel">Notification</h4>
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                    </div>
+                    <div class="modal-body">
+                        <h4><span id="txtMessageHeading"></span></h4>
+                        <p id="txtMessage"></p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-info waves-effect" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+                <!-- /.modal-content -->
+            </div>
+            <!-- /.modal-dialog -->
         </div>
 @endsection
 

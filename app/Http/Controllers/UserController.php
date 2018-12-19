@@ -5,6 +5,9 @@ use App\Infastuture\coinRanking;
 use App\Infastuture\orderConfimationModel;
 use App\Infastuture\BuySellModel;
 use App\Infastuture\UsdBalanceModel;
+use App\Infastuture\CryptoBalanceModel;
+use App\Infastuture\TransancationsModels;
+
 use App\tokenOrders;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -20,7 +23,7 @@ class UserController extends Controller
     public function Index()
     {
         $coinRanking = new coinRanking();
-        // $coins = $coinRanking->GetMarketData();
+       // $coins = $coinRanking->GetMarketData();
         // if($coins->status=="success"){
         //     return view('user.index')->with("coins",$coins->data->coins);
 
@@ -98,7 +101,11 @@ class UserController extends Controller
         $amount = $post->amount;
         $quantity = $post->quantity;
         $price = $post->price;
-       // $calculatedQuantity = $buymodel->calculateTokenQuatity($symbol, $amount);
+
+        //uncomment below to use real time api
+       // $calAmount = $buymodel->calculateTokenQuatity($symbol, $amount);
+      // $quantity = $calAmount->quantity;
+      // $price = $calAmount->price;
         //get and check user balance
        $UserUsd =  new UsdBalanceModel();
        $balance =  $UserUsd->GetUsdBalance($userid);
@@ -106,9 +113,43 @@ class UserController extends Controller
             // deduct the amount from the balance
            if($UserUsd->DeductUsdBalance($userid, $amount)){
                //credit user crpto currency balance
-           };
+                $credit = new CryptoBalanceModel();
+                if($credit->CreditBalance($userid,$quantity,$symbol)){
+                    //create Transactions
+                    $trans = new TransancationsModels();
+                    $trans->Create($userid,"Buy token", $symbol,$quantity, $amount,$price,"Transaction Created");
+                    return response()->json(['status'=>200, 'message' => "Successfully Purchased Token"]);
+                }
+           }
+       }else{
+                   //return Insuffcient Funds
+                   return response()->json(['status'=>201, 'message' => "Insuffienct fund, Please fund your account and continue"]);
        }
-        return response()->json(['success' => "Successfully"]);
+       return response()->json(['status'=> 0, 'message' => "Transaction Failed to Compelte"]);
+    }
+
+    public function SellToken(Request $request){
+        $sellmodel = new BuySellModel();
+        $userid = Auth::id();
+        $post =(object)$request->all();
+        $symbol =$post->symbol;
+        $amount = $post->amount;
+        $quantity = $post->quantity;
+        $price = $post->price;
+        $sell = $sellmodel->SellCoin($userid, $symbol,$quantity);
+        if(is_bool($sell)){
+            if(  $sell ==true){
+                return response()->json(['status'=>200, 'message' => "Successfully Sold Token"]);
+            }
+        }
+        if(is_array($sell)){
+            return response()->json(['status'=>0, 'message' => $sell["error"]]);
+        }
+        return response()->json(['status'=>0, 'message' => "Unable to Process the Request"]);
+
+    }
+    public function MyTokens(){
+        return view("user.myTokens");
     }
 
 }

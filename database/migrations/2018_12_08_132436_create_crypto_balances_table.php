@@ -17,7 +17,7 @@ class CreateCryptoBalancesTable extends Migration
             $table->increments('id');
             $table->integer('user_id');
             $table->string('cryptocurrency_type');
-            $table->decimal('crypto_balance',8,6);
+            $table->decimal('crypto_balance');
 
             $table->foreign('user_id')
             ->references('id')->on('users')

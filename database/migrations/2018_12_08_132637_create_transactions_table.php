@@ -16,14 +16,13 @@ class CreateTransactionsTable extends Migration
         Schema::create('transactions', function (Blueprint $table) {
             $table->increments('Trans_id');
             $table->integer('user_id');
-            $table->integer('transaction_type');
+            $table->string('transaction_type');
             $table->string('cryptoType');
             $table->decimal('token');
             $table->decimal('price_usd');
             $table->decimal("price_per_coin_usd");
             $table->string('status');
             $table->timestamps();
-
            // $table->primary('Trans_id');
             $table->foreign('user_id')
             ->references('id')->on('users')
