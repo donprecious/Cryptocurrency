@@ -12,7 +12,8 @@ class order_confirmations extends Model
     public function User(){
         return $this->belongsTo('App\User');
     }
+
     public function tokenOrders(){
-        return $this->belongsTo('App\tokenOrders');
+        return $this->belongsTo('App\tokenOrders', "order_id");
     }
 }

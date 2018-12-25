@@ -35,11 +35,15 @@ Route::get('/user/VerifyPayment/{orderid}', 'UserController@verifyPayment');
 Route::get('/user/PaymentInfo', function () {
     return view("User.paymentinfo");
 });
+Route::get('user/history', "UserController@history");
 
 //User controller post request route
 Route::post('user/fundAccount','UserController@FundAccount');
 Route::post('/user/buytoken', "UserController@BuyToken");
 Route::post('/user/selltoken', "UserController@SellToken");
+Route::Post('/user/UploadPaymentDoc', "UserController@UploadPaymentDoc");
+
+
 //admin get controllers
 Route::get('/admin', 'adminController@dashboard');
 Route::get('/admin/confirmations','adminController@confirmations');

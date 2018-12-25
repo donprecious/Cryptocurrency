@@ -31,8 +31,9 @@
                             </div>
                             <!-- .step-head -->
                             <div class="form-step-fields card-innr">
-                                    <form enctype="multipart/form-data" method="post" action="{{ action('UserController@FundAccount')  }}">
+                                    <form enctype="multipart/form-data" method="post" action="/user/UploadPaymentDoc">
                                 <!-- .nav-tabs-line -->
+                                @csrf
                                 <div class="tab-content" id="myTabContent">
                                     <div class="tab-pane fade show active" id="passport">
                                         @if(count($errors)>0)
@@ -54,16 +55,14 @@
                                         <div class="row align-items-center">
 
                                                 <div class="col-md-12">
-                                                    <!--
-                                                        <div class="input-item input-with-label">
-                                                                <label class="input-item-label">Picture Upload</label>
-                                                                <div class="relative">
-                                                                    <em class="input-file-icon fas fa-upload"></em>
-                                                                    <input type="file" name="file_upload" class="input-file" id="file_upload">
-                                                                    <label for="file-01">Choose a file</label>
-                                                                </div>
+
+
+                                                        <div class="relative">
+                                                            <em class="input-file-icon fas fa-upload"></em>
+                                                            <input type="file" class="input-file" id="file_upload" name="file_upload">
+                                                            <label for="file_upload">Choose a file</label>
                                                         </div>
-                                                    -->
+
 
                                                                 <div class="input-item input-with-label">
                                                                         <label class="input-item-label"></label>

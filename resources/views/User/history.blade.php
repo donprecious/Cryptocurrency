@@ -6,24 +6,72 @@
         <div class="card content-area">
             <div class="card-innr">
                 <div class="card-head">
-                    <h4 class="card-title">My Wallets</h4>
+                    <h4 class="card-title">Transactions History</h4>
                 </div>
                 <table class="data-table dt-init user-tnx">
                     <thead>
                         <tr class="data-item data-head">
-                            <th class="data-col dt-tnxno">Currency</th>
-                            <th class="data-col dt-token">Tokens</th>
+                            <th class="data-col">ID/Date</th>
+                            <th class="data-col">Currency</th>
 
-                            <th class="data-col dt-usd-amount">USD Amount</th>
+                            <th class="data-col">Token</th>
+                            <th class="data-col">price</th>
+                            <th class="data-col">Trans.. Type</th>
 
-                            <th class="data-col dt-type">
+
+                            <th class="data-col">past price </th>
+                            <th class="data-col">current price per token</th>
+                            <th class="data-col">
                                 <div class="dt-type-text">Action</div>
                             </th>
 
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach ($coins as $coin)
+                        @foreach ($records as $record)
+
+                        <tr class="data-item">
+                                <td class="data-col dt-tnxno">
+                                    <div class="d-flex align-items-center">
+                                            <div class="data-state ">
+                                                    <img class="img-fluid" src="{{$record->iconUrl}}" width="20" height="20">
+                                        </div>
+                                        <div class="fake-class">
+                                            <span class="lead tnx-id">{{$record->id}}</span>
+                                            <span class="sub sub-date">{{$record->date}}</span>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td class="data-col dt-token">
+                                    <span class="lead token-amount">{{$record->name}}</span>
+                                    <span class="sub sub-symbol">{{$record->symbol}}</span>
+                                </td>
+                                <td class="data-col dt-amount">
+                                    <span class="lead amount-pay">{{$record->token}}</span>
+                                </td>
+                                <td class="data-col dt-usd-amount">
+                                        <span class="lead amount-pay">{{$record->price}}</span>
+                                    </td>
+                                <td class="data-col dt-amount">
+                                        <span class="lead amount-pay">{{$record->trans_type}}</span>
+                                </td>
+
+                                <td class="data-col dt-usd-amount">
+                                  <span class="lead amount-pay">{{$record->transactionPrice}}</span>
+
+                                </td>
+                                <td class="data-col dt-account">
+                                    <span class="lead user-info">{{$record->currentPrice}}</span>
+                                </td>
+                                <td class="data-col dt-type">
+                                    <button class="badge badge-outline badge-success badge-md btnBuyhistory btnTrade" data-type="Sell" data-symbol="{{$record->symbol}}" data-quantity="{{$record->token}}" data-price="{{$record->price}}"  data-current-price-per-coin="{{$record->price}}" >Sell Now</button>
+                                    <button class="badge badge-outline badge-success badge-md btnSellhistory btnTrade" data-type="Buy" data-symbol="{{$record->symbol}}" data-quantity="{{$record->token}}" data-price="{{$record->price}}"  data-current-price-per-coin="{{$record->price}}">Buy Now</button>
+                                </td>
+
+                            </tr>
+                        @endforeach
+
+                        {{-- @foreach ($coins as $coin)
                         <tr class="data-item">
                                 <td class="data-col dt-tnxno">
                                     <div class="d-flex align-items-center">
@@ -82,7 +130,7 @@
                                 </td>
                             </tr>
                         @endforeach
-
+ --}}
 
                     </tbody>
                 </table>
@@ -102,14 +150,13 @@
                     <em class="ti ti-close"></em>
                 </a>
                 <div class="popup-body">
-                    <h3 class="popup-title">Sell Cryptocurrency</h3>
+                    <h3 class="popup-title"><span class="sellBuyTxt"></span> Cryptocurrency</h3>
                     <form action="#">
                             <div class="input-item input-with-label">
                                 <label class="input-item-label text-exlight">Select Currency</label>
                                 <select class="input-bordered" id="selectCurrency">
-                                    @foreach ($coins as $coin)
+                                    @foreach ($records as $coin)
                                     <option value="{{$coin->symbol}}" data-price="{{$coin->price}}" data-symbol="{{$coin->symbol}}">{{$coin->symbol}} - {{$coin->name}}</option>
-
                                     @endforeach
                               </select>
 
@@ -125,7 +172,7 @@
                                     <span class="input-note">amount to calculate the token for the cryptocurrency</span>
                                 </div>
                             <div class="gaps-1x"></div>
-                            <button class="btn btn-primary btn-block" id="btnSellCoin">Sell Now <img id="img_buy" width="15" height="15" class="img-fluid hide-loader" src="{{asset('img/ajax/loading4.gif')}}"></button>
+                            <button class="btn btn-primary btn-block" id="btnCoinTrade" data-orderType=""><span class="sellBuyTxt"></span>  Now <img id="img_buy" width="15" height="15" class="img-fluid hide-loader" src="{{asset('img/ajax/loading4.gif')}}"></button>
                         </form>
                 </div>
             </div>
@@ -166,6 +213,38 @@
       $(function(){
           $("#openFundBtn").click(function(event){
             $("#fundAccountModal").modal();
+          });
+          $(".btnTrade").click(function(event){
+              let tradetype = $(this).attr('data-type');
+
+             var symbol = $(this).attr("data-symbol");
+             //task is to show the modal and set the selected option to the corresponding symbol
+                $("#selectCurrency").val(symbol);
+                $("#sellModal").modal();
+                if(tradetype=="Sell"){
+                //Sell the token
+                $(".sellBuyTxt").text("Sell");
+
+                $("#btnCoinTrade").attr('data-orderType',"Sell");
+                $("#txtQuanity").val($(this).attr("data-quantity"));
+
+                }
+                else{
+                    $("#btnCoinTrade").attr('data-orderType',"Buy");
+                    $(".sellBuyTxt").text("Sell");
+                    var  token =  $("#txtAmount").val();
+                    $("#txtQuanity").val($(this).attr("data-quantity"));
+                }
+
+          });
+          $("#btnCoinTrade").click(function(){
+              var tradeType =  $("#btnCoinTrade").attr('data-orderType');
+              if(tradeType=="Sell"){
+                selltoken();
+              }
+              else if(tradeType=="Buy"){
+                  buytoken();
+              }
           });
       });
   </script>

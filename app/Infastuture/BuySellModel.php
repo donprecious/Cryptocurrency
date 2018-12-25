@@ -5,6 +5,7 @@ use App\tokenOrders;
 
 use App\Infastuture\UserModel;
 use App\Infastuture\CoinRankingApi;
+use App\Infastuture\coinRanking;
 use App\Infastuture\CryptoBalanceModel;
 use App\Infastuture\UsdBalanceModel;
 use App\Infastuture\TransancationsModels;
@@ -14,7 +15,7 @@ class BuySellModel{
     public function calculateTokenQuatity($symbol, $amount){
         //get current rate of the currency symbol
         //formulea to calculate the quantity of token = amount_from_user / amount_per_token ;  (all in usd)
-        $coinapi = new CoinRankingApi();
+        $coinapi = new coinRanking();
         $coin = $coinapi->GetSpecificCurrencyData($symbol);
         $price_usd = $coin->price;
         $quanity = $amount /$price_usd ;
@@ -27,7 +28,7 @@ class BuySellModel{
     }
 
     public function calculateTokenAmount($symbol, $quantiy){
-        $coinapi = new CoinRankingApi();
+        $coinapi = new coinRanking();
         $coin = $coinapi->GetSpecificCurrencyData($symbol);
         $price_usd = $coin->price;
         $amount = $price * $quantity;

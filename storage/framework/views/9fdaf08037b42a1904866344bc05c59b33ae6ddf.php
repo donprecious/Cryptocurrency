@@ -10,8 +10,8 @@
                     <div class="gaps-1-5x"></div>
                     <div class="data-details d-md-flex flex-wrap align-items-center justify-content-between">
                         <div class="fake-class">
-                            <span class="data-details-title">Submited By rre</span>
-                            <span class="data-details-info">UD102001</span>
+                            <span class="data-details-title">Submited By </span>
+                            <span class="data-details-info"><?php echo e($order->User->email); ?></span>
                         </div>
                         <div class="fake-class">
                             <span class="data-details-title">Submited On</span>
@@ -78,7 +78,12 @@
                                     <span class="data-details-docs-title">Front Side</span>
                                     <div class="data-doc-item data-doc-item-lg">
                                         <div class="data-doc-image">
-                                            <img src="<?php echo e(asset('tokenWiz/images/passport-a-fornt.jpg')); ?>" alt="passport">
+                                            <?php $__currentLoopData = $order->order_confirmations; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $i): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+
+                                            <img src="<?php echo e($i->file_url); ?>" alt="passport">
+
+                                            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+
                                         </div>
                                         <ul class="data-doc-actions">
                                             <li>
@@ -90,21 +95,7 @@
                                     </div>
                                 </li>
                                 <!-- li -->
-                                <li>
-                                    <span class="data-details-docs-title">Back Side</span>
-                                    <div class="data-doc-item data-doc-item-lg">
-                                        <div class="data-doc-image">
-                                    <img src="<?php echo e(asset('tokenWiz/images/passport-a-back.jpg')); ?>" alt="passport">
-                                        </div>
-                                        <ul class="data-doc-actions">
-                                            <li>
-                                                <a href="#">
-                                                    <em class="ti ti-import"></em>
-                                                </a>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </li>
+
                                 <!-- li -->
                             </ul>
                         </li>

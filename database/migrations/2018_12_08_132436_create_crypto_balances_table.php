@@ -17,13 +17,12 @@ class CreateCryptoBalancesTable extends Migration
             $table->increments('id');
             $table->integer('user_id');
             $table->string('cryptocurrency_type');
-            $table->decimal('crypto_balance');
-
+            $table->decimal('crypto_balance',20,6);
             $table->foreign('user_id')
             ->references('id')->on('users')
             ->onDelete('cascade')->onUpdate('cascade');
-
         });
+
     }
 
     /**

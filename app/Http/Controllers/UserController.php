@@ -8,10 +8,12 @@ use App\Infastuture\UsdBalanceModel;
 use App\Infastuture\CryptoBalanceModel;
 use App\Infastuture\TransancationsModels;
 
+
 use App\tokenOrders;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
+use JD\Cloudder\Facades\Cloudder;
 class UserController extends Controller
 {
     //
@@ -23,12 +25,11 @@ class UserController extends Controller
     public function Index()
     {
         $coinRanking = new coinRanking();
-       // $coins = $coinRanking->GetMarketData();
-        // if($coins->status=="success"){
-        //     return view('user.index')->with("coins",$coins->data->coins);
-
-        // }
-        return view('user.index');
+        $coins = $coinRanking->GetMarketData();
+        if($coins->status=="success"){
+            return view('user.index')->with("coins",$coins->data->coins);
+         }
+      //  return view('user.index');
     }
 
     public function fundAccount(Request $request)
@@ -48,7 +49,11 @@ class UserController extends Controller
     public function orderConfirmation($orderid)
     {
         $userid = Auth::id();
-        $order = tokenOrders::where('user_id', $userid)->where("order_id", $orderid);
+        $order = tokenOrders::with("order_confirmations")->where('user_id', $userid)->where("order_id", $orderid)->first();
+        foreach($order->order_confirmations as $i){
+            $file = $i->file_url;
+        }
+
         if ($order != null) {
             return view("user.orderConfirmation")->with("order", $order);
         }
@@ -67,16 +72,21 @@ class UserController extends Controller
 
     }
 
-    public function UploadPicture(Request $request)
+    public function UploadPaymentDoc(Request $request)
     {
         $this->validate($request,
             [
-                'image_name' => 'required|mimes:jpeg,bmp,jpg,png|between:1, 6000',
+                'file_upload' => 'required|mimes:jpeg,bmp,jpg,png|between:1, 6000',
             ]
         );
 
         $image_name = $request->file('file_upload')->getRealPath();
-
+        // Cloudinary::config(array(
+        //     "cloud_name" => "votel",
+        //     "api_key" => "849621861927721",
+        //     "api_secret" => "0ofuuFUGk_6zt4lmaXTsXayy07k"
+        //   )
+        // );
         Cloudder::upload($image_name, null, ['folder' => "Cryptocurrency"]);
         list($width, $height) = getimagesize($image_name);
 
@@ -103,9 +113,9 @@ class UserController extends Controller
         $price = $post->price;
 
         //uncomment below to use real time api
-       // $calAmount = $buymodel->calculateTokenQuatity($symbol, $amount);
-      // $quantity = $calAmount->quantity;
-      // $price = $calAmount->price;
+        $calAmount = $buymodel->calculateTokenQuatity($symbol, $amount);
+         $quantity = $calAmount->quantity;
+       $price = $calAmount->price;
         //get and check user balance
        $UserUsd =  new UsdBalanceModel();
        $balance =  $UserUsd->GetUsdBalance($userid);
@@ -149,7 +159,59 @@ class UserController extends Controller
 
     }
     public function MyTokens(){
-        return view("user.myTokens");
+        //get currency name, symbol, token balance and market price
+        $userid = Auth::id();
+        $currency = [];
+        $coinApi = new coinRanking();
+        $myTokens =(new CryptoBalanceModel())->GetCryptoCurrency($userid);
+        foreach($myTokens as $mytoken){
+            $symbol = $mytoken->cryptocurrency_type;
+
+            $coin = $coinApi->GetSpecificCurrencyData($symbol);
+            $price = $coin->price;
+            $token = [
+                "symbol"=> $symbol,
+                "name"=>$coin->name,
+                "price"=>$price,
+                "quantity"=>  $mytoken->crypto_balance,
+                "iconUrl"=>$coin->iconUrl
+                    ];
+          array_push($currency, (object)$token);
+        }
+        $coins =(object)$currency;
+        return view("user.myTokens")->with("coins",$coins);
     }
 
+    public function history(){
+        $userid=Auth::id();
+        $rec = [];
+        $coinApi = new coinRanking();
+        $trans = (new TransancationsModels() )->GetUserTransactions($userid);
+        foreach ($trans as $i) {
+            $id =$i->Trans_id;
+            $symbol = $i->cryptoType;
+            $date = $i->created_at;
+            $token = $i->token;
+            $price = $i->price_usd;
+            $transType = $i->transaction_type;
+            $transactionPrice = $i->price_per_coin_usd;
+            $coin = $coinApi->GetSpecificCurrencyData($symbol);
+            $coinName=$coin->name;
+            $iconUrl = $coin->iconUrl;
+            $currentPrice = $coin->price;
+            array_push($rec, (object)[
+                "id"=>$id,
+                "name"=>$coinName,
+                "symbol"=>$symbol,
+                "token"=>$token,
+                "trans_type"=>$transType,
+                "date"=>$date,
+                "price"=>$price,
+                "transactionPrice"=>$transactionPrice,
+                "currentPrice"=>$currentPrice,
+                "iconUrl"=>$iconUrl,
+            ]);
+        }
+        return view("user.history")->with("records",$rec);
+    }
 }

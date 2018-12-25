@@ -33,7 +33,6 @@ use Psr\Http\Message\ResponseInterface;
     }
 
     public function GetMarketData(){
-
             try {
                 //code...
                 $response = $this->client->request('GET',"coins/" );
@@ -55,7 +54,7 @@ use Psr\Http\Message\ResponseInterface;
     public function GetSpecificCurrencyData($symbol){
         $coins = $this->GetMarketData()->data->coins;
         foreach ($coins as $coin) {
-            if($coins->coin == $symbol){
+            if($coin->symbol == $symbol){
                 return $coin;
             }
         }

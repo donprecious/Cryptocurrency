@@ -92,64 +92,41 @@
                                     <!-- tr -->
                                 </thead>
                                 <!-- thead -->
+                                
+
+
+
+
                                 <tbody>
-                                      <!--
-                                      
+                                  <?php $__currentLoopData = $coins; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $coin): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                  <tr>
+                                          <td>
+                                              <div class="d-flex align-items-center">
+                                                  <div class="data-state ">
+                                                      <img class="img-fluid" src="<?php echo e($coin->iconUrl); ?>" width="20" height="20">
+                                                  </div>
+                                                  <span class="lead"><?php echo e($coin->name); ?></span>
+                                              </div>
+                                          </td>
+                                          <td>
+                                              <span>
 
+                                                  <span>
+                                                          <span class="lead"><?php echo e(round($coin->price,2)); ?></span>
+                                                          <span class="sub"><?php echo e($coin->symbol); ?>
 
-                                  <!--
+                                                              <em class="fas fa-info-circle" data-toggle="tooltip" data-placement="bottom"
+                                                                  data-original-title="1 <?php echo e($coin->symbol); ?> = <?php echo e(round($coin->price,2)); ?> USD"></em>
+                                                          </span>
+                                                      </span>
+                                          </td>
 
-                                    <tr>
-                                            <td>
-                                                <div class="d-flex align-items-center">
-                                                    <div class="data-state data-state-progress"></div>
-                                                    <span class="lead">8,052</span>
-                                                </div>
-                                            </td>
-                                            <td>
-                                                <span>
-                                                    <span class="lead">0.165</span>
-                                                    <span class="sub">BTC
-                                                        <em class="fas fa-info-circle" data-toggle="tooltip" data-placement="bottom"
-                                                            data-original-title="1 BTC = 5450.54 USD"></em>
-                                                    </span>
-                                                </span>
-                                            </td>
-                                            <td class="d-none d-sm-table-cell tnx-date">
-                                                <span class="sub sub-s2">2018-08-24 10:20 PM</span>
-                                            </td>
-                                            <td class="tnx-type">
-                                                <span class="tnx-type-md badge badge-outline badge-warning badge-md">Bonus</span>
-                                                <span class="tnx-type-sm badge badge-sq badge-outline badge-warning badge-md">B</span>
-                                            </td>
-                                        </tr>
-                                -->
-                                    <!-- tr -->
-                                    <tr>
-                                        <td>
-                                            <div class="d-flex align-items-center">
-                                                <div class="data-state data-state-approved"></div>
-                                                <span class="lead">19,000</span>
-                                            </div>
-                                        </td>
-                                        <td>
-                                            <span>
-                                                <span class="lead">3.141</span>
-                                                <span class="sub">LTC
-                                                    <em class="fas fa-info-circle" data-toggle="tooltip" data-placement="bottom"
-                                                        data-original-title="1 LTC = 180.54 USD"></em>
-                                                </span>
-                                            </span>
-                                        </td>
-                                        <td class="d-none d-sm-table-cell tnx-date">
-                                            <span class="sub sub-s2">2018-08-24 10:20 PM</span>
-                                        </td>
-                                        <td class="tnx-type">
-                                            <span class="tnx-type-md badge badge-outline badge-warning badge-md">Bonus</span>
-                                            <span class="tnx-type-sm badge badge-sq badge-outline badge-warning badge-md">B</span>
-                                        </td>
-                                    </tr>
-                                    <!-- tr -->
+                                          <td>
+
+                                                <button data-symbol="<?php echo e($coin->symbol); ?>" data-quantity-left="0.1"  data-current-price-per-coin="<?php echo e($coin->price); ?>" class="dt-type-md badge badge-outline badge-success badge-md btnBuyTb">Order</button>
+                                          </td>
+                                      </tr>
+                                  <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                 </tbody>
                                 <!-- tbody -->
                             </table>
@@ -166,14 +143,20 @@
                             </div>
                             <div class="input-item input-with-label">
                                     <label class="input-item-label">Select Token</label>
+                                    <select class="select select-block select-bordered" id="selectCurrency">
+                                            <?php $__currentLoopData = $coins; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $coin): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                            <option value="<?php echo e($coin->symbol); ?>" data-price="<?php echo e($coin->price); ?>" data-symbol="<?php echo e($coin->symbol); ?>"><?php echo e($coin->symbol); ?> - <?php echo e($coin->name); ?></option>
+                                            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                                    </select>
                                     <!--
                                         
-                                    -->
-                                    <select class="select select-block select-bordered" id="selectCurrency">
+                                          <select class="select select-block select-bordered" id="selectCurrency">
                                         <option value="option-one" data-price="3245.43958" data-symbol="BTC">BTC - BIT-COIN</option>
                                         <option value="option-one" data-price="49038.43958" data-symbol="LTC">Ltc - litecoin</option>
                                         <option value="option-one" data-price="135.43958" data-symbol="BTC">ETH - ethrum</option>
                                     </select>
+                                    -->
+
                             </div>
                             <div class="row">
                                     <div class="col-12 col-sm-12">
@@ -290,7 +273,7 @@
                         <em class="ti ti-close"></em>
                     </a>
                     <div class="popup-body">
-                    <form action="<?php echo e(action('UserController@FundAccount')); ?>" method="POST">
+                    <form action="/user/UploadPaymentDoc" method="POST">
                         <?php echo csrf_field(); ?>
                         <h3 class="popup-title text-center">Fund Account</h3>
 
@@ -333,6 +316,49 @@
             </div>
             <!-- /.modal-dialog -->
         </div>
+
+
+<div class="modal fade" id="BuyModal" tabindex="-1">
+
+        <div class="modal-dialog modal-dialog-sm">
+            <div class="modal-content">
+                <a href="#" class="modal-close" data-dismiss="modal" aria-label="Close">
+                    <em class="ti ti-close"></em>
+                </a>
+                <div class="popup-body">
+                    <h3 class="popup-title">Buy Cryptocurrency</h3>
+                    <form action="#">
+                            <div class="input-item input-with-label">
+                                <label class="input-item-label text-exlight">Select Currency</label>
+                                <select class="input-bordered" id="selectCurrency2">
+                                    <?php $__currentLoopData = $coins; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $coin): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                    <option value="<?php echo e($coin->symbol); ?>" data-price="<?php echo e($coin->price); ?>" data-symbol="<?php echo e($coin->symbol); ?>"><?php echo e($coin->symbol); ?> - <?php echo e($coin->name); ?></option>
+
+                                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+
+                              </select>
+
+                            </div>
+                            <div class="input-item input-with-label">
+                                    <label class="input-item-label ucap text-exlight">Enter the token quantity </label>
+                                    <input class="input-bordered" name='txtQuanity1' id="txtQuanity1"  type="text">
+                                    <span class="input-note">Enter the quantity of cryptocurrency</span>
+                            </div>
+                            <div class="input-item input-with-label">
+                                    <label class="input-item-label ucap text-exlight">Amount in USD</label>
+                                    <input class="input-bordered" disabled name='txtAmount1' id="txtAmount1" type="text" placeholder="100">
+                                    <span class="input-note">amount to calculate the token for the cryptocurrency</span>
+                                </div>
+                            <div class="gaps-1x"></div>
+                            <button class="btn btn-primary btn-block" id="btnBuyToken1">Buy Now <img id="img_buy" width="15" height="15" class="img-fluid hide-loader" src="<?php echo e(asset('img/ajax/loading4.gif')); ?>"></button>
+                        </form>
+                </div>
+            </div>
+            <!-- .modal-content -->
+        </div>
+        <!-- .modal-dialog -->
+    </div>
+
 <?php $__env->stopSection(); ?>
 
 <?php $__env->startSection('scripts'); ?>

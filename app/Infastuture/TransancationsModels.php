@@ -37,7 +37,18 @@ class TransancationsModels{
             return false;
         }
     }
-
+public function GetUserTransactions($userid){
+    try {
+        $trans = Transactions::where("user_id", $userid)->get();
+        if(count($trans)){
+            return $trans;
+        }
+        return null;
+    } catch (\Throwable $th) {
+        //throw $th;
+        return null;
+    }
+}
 
 
 
