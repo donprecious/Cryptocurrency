@@ -53,7 +53,7 @@ class UserController extends Controller
         $confirmations = App\order_confirmations::where("user_id",$userid)->where("order_id",$orderid)->get();
 
         if ($order != null) {
-            return view("user.orderConfirmation")->with("order", $order)->with("confirms",$confirmations);
+            return view("User.orderConfirmation")->with("order", $order)->with("confirms",$confirmations);
         }
     }
 //    public function orderConfirmation($orderId){
@@ -65,7 +65,7 @@ class UserController extends Controller
         $userid = Auth::id();
         $order = tokenOrders::where('user_id', $userid)->where('order_id', $orderid)->first();
         if ($order->count()) {
-            return view("user.verifyPayment")->with("order", $order);
+            return view("User.verifyPayment")->with("order", $order);
         }
 
     }
@@ -177,7 +177,7 @@ class UserController extends Controller
           array_push($currency, (object)$token);
         }
         $coins =(object)$currency;
-        return view("user.myTokens")->with("coins",$coins);
+        return view("User.myTokens")->with("coins",$coins);
     }
 
     public function history(){
@@ -210,6 +210,6 @@ class UserController extends Controller
                 "iconUrl"=>$iconUrl,
             ]);
         }
-        return view("user.history")->with("records",$rec);
+        return view("User.history")->with("records",$rec);
     }
 }
