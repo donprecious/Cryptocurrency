@@ -27,7 +27,7 @@ class UserController extends Controller
         $coinRanking = new coinRanking();
         $coins = $coinRanking->GetMarketData();
         if($coins->status=="success"){
-            return view('user.index')->with("coins",$coins->data->coins);
+            return view('User.index')->with("coins",$coins->data->coins);
          }
       //  return view('user.index');
     }
