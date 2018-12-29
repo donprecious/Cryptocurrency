@@ -217,10 +217,19 @@ class UserController extends Controller
         return view("User.history")->with("records",$rec);
     }
 
-    public function paymentOrders($orderid){
+    public function paymentOrders(){
         $userid = Auth::id();
         $tokenOrders = new  TokenOrdersModel();
-     //   $order = $tokenOrders->GetUserOrders($userid);
-        return view('User.PaymentOrders')->with('order',$order);
+        $order = $tokenOrders->GetUserOrders($userid);
+        return view('User.PaymentOrders')->with('orders',$order);
+
+    }
+
+    public function paymentOrder($orderid){
+        $userid = Auth::id();
+        $tokenOrders = new  TokenOrdersModel();
+        $order = $tokenOrders->GetUserOrder($userid,$orderid);
+        return view('User.PaymentOrder')->with('order',$order);
+
     }
 }

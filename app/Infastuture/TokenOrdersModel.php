@@ -82,7 +82,7 @@ class TokenOrdersModel{
 
     public function GetUserOrders($user_id){
         $userorder = new tokenOrders();
-        $orders = $userOder::where("user_id", $userid)->get();
+        $orders = $userorder::where("user_id", $user_id)->get();
         if(count($orders)){
             return $orders;
         }else{
@@ -91,7 +91,7 @@ class TokenOrdersModel{
     }
     public function GetUserOrdersWithStatus($user_id,$status){
         $userorder = new tokenOrders();
-        $orders = $userOder::where("user_id", $userid)->with("status",$status)->get();
+        $orders = $userorder::where("user_id", $user_id)->with("status",$status)->get();
         if(count($orders)){
             return $orders;
         }else{
@@ -100,7 +100,7 @@ class TokenOrdersModel{
     }
     public function GetUserOrder($user_id, $order_id){
         $userorder = new tokenOrders();
-        $orders = $userOder::where("user_id", $user_id)
+        $orders = $userorder::where("user_id", $user_id)
         ->where('order_id',$order_id)->first();
         if($orders){
             return $orders;
@@ -111,7 +111,7 @@ class TokenOrdersModel{
 
     public function GetUserOrderWithStatus($user_id, $order_id, $status){
         $userorder = new tokenOrders();
-        $orders = $userOder::where("user_id", $user_id)
+        $orders = $userorder::where("user_id", $user_id)
         ->where('order_id',$order_id)->where("status",$status)->first();
         if($orders){
             return $orders;

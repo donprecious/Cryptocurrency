@@ -37,6 +37,8 @@ Route::get('/user/PaymentInfo', function () {
 });
 Route::get('user/history', "UserController@history");
 Route::get('user/payments',"UserController@paymentOrders");
+Route::get('user/payment/{orderid}',"UserController@paymentOrder");
+
 //User controller post request route
 Route::post('user/fundAccount','UserController@FundAccount');
 Route::post('/user/buytoken', "UserController@BuyToken");
