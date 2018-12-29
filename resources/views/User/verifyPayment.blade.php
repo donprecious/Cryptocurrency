@@ -48,6 +48,7 @@
                                         @if(session()->has('status'))
                                             <div class="alert alert-info" role="alert">
                                                 {{session()->get('status')}}
+                                                <a href="/user/payments" class="btn btn-outline btn-outline-orange"> Go to Request</a>
                                             </div>
                                           @endif
 

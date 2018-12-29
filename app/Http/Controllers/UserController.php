@@ -229,7 +229,12 @@ class UserController extends Controller
         $userid = Auth::id();
         $tokenOrders = new  TokenOrdersModel();
         $order = $tokenOrders->GetUserOrder($userid,$orderid);
-        return view('User.PaymentOrder')->with('order',$order);
+        $confirms= (new orderConfimationModel())->GetOrderVerifications($userid,$orderid);
+        foreach($order->order_confirmations as $i){
+
+        }
+        return view('User.PaymentOrder')
+        ->with('order',$order)->with("proofs", $confirms);
 
     }
 }

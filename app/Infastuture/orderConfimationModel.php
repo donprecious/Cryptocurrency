@@ -34,9 +34,9 @@ class orderConfimationModel{
         return false;
     }
 
-    public function GetOrderVerications($userid){
+    public function GetOrderVerifications($userid,$orderid){
         $order_confirmation = new order_confirmations();
-        $verifications = $order_confirmation::where("user_id",$userid)->get();
+        $verifications = $order_confirmation::where("user_id",$userid)->where("order_id", $orderid)->get();
         if(count($verifications)){
             return $verifications;
         }

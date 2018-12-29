@@ -26,6 +26,8 @@
 
                                         <div class="fake-class">
                                             <span class="lead tnx-id"><?php echo e($order->created_at); ?></span>
+                                            <span class="sub sub-date"><?php echo e($order->order_id); ?></span>
+
                                         </div>
                                     </div>
                                 </td>
@@ -40,7 +42,7 @@
 
                                 <td class="data-col text-right">
                                     <div class="relative d-inline-block">
-                                    <a href="/user/payment/<?php echo e($order->orderid); ?>" class="btn btn-light-alt btn-xs btn-icon">
+                                    <a href="/user/payment/<?php echo e($order->order_id); ?>" class="btn btn-light-alt btn-xs btn-icon">
                                          View <em class="ti ti-more-alt"></em>
                                         </a>
 

@@ -1,6 +1,4 @@
-@extends('layouts.userLayout')
-
-@section('content')
+<?php $__env->startSection('content'); ?>
 <div class="page-content">
         <div class="container">
             <div class="card content-area">
@@ -14,21 +12,21 @@
 
                         <div class="fake-class">
                             <span class="data-details-title">Submited On</span>
-                            <span class="data-details-info">{{$order->created_at}}</span>
+                            <span class="data-details-info"><?php echo e($order->created_at); ?></span>
                         </div>
                         <div class="fake-class">
                             <span class="data-details-title">Checked By</span>
                             <span class="data-details-info">Admin</span>
                         </div>
-                        @if($order->status!="PENDING")
+                        <?php if($order->status!="PENDING"): ?>
                         <div class="fake-class">
                             <span class="data-details-title">Checked On</span>
 
-                            <span class="data-details-info">{{$order->updated_at}}</span>
+                            <span class="data-details-info"><?php echo e($order->updated_at); ?></span>
                         </div>
-                        @endif
+                        <?php endif; ?>
                         <div class="fake-class">
-                        <span class="badge badge-md badge-block badge-primary ucap">{{$order->status}}</span>
+                        <span class="badge badge-md badge-block badge-primary ucap"><?php echo e($order->status); ?></span>
                         </div>
                         <div class="gaps-2x w-100 d-none d-md-block"></div>
 
@@ -38,24 +36,24 @@
                     <ul class="data-details-list">
                         <li>
                             <div class="data-details-head">Order ID</div>
-                            <div class="data-details-des">{{$order->order_id}}</div>
+                            <div class="data-details-des"><?php echo e($order->order_id); ?></div>
                         </li>
                         <!-- li -->
 
                         <!-- li -->
                         <li>
                             <div class="data-details-head">Amount / Quanity</div>
-                        <div class="data-details-des">{{$order->quantity}}</div>
+                        <div class="data-details-des"><?php echo e($order->quantity); ?></div>
                         </li>
                         <!-- li -->
                         <li>
                             <div class="data-details-head">Email</div>
-                            <div class="data-details-des">{{$order->user->email}}</div>
+                            <div class="data-details-des"><?php echo e($order->user->email); ?></div>
                         </li>
                         <!-- li -->
                         <li>
                             <div class="data-details-head">Status</div>
-                        <div class="data-details-des">{{$order->status}}</div>
+                        <div class="data-details-des"><?php echo e($order->status); ?></div>
                         </li>
                         <!-- li -->
 
@@ -65,17 +63,17 @@
                     <h6 class="card-sub-title">Uploaded Documnets</h6>
                     <ul class="data-details-list">
                         <li>
-                        <div class="data-details-head">Proof of Payment <a href="/user/VerifyPayment/{{$order->order_id}}" class="btn btn-xs btn-primary pull-right">Upload Doc</a></div>
+                        <div class="data-details-head">Proof of Payment <a href="/user/VerifyPayment/<?php echo e($order->order_id); ?>" class="btn btn-xs btn-primary pull-right">Upload Doc</a></div>
                             <ul class="data-details-docs">
 
                                 <!-- li -->
-                                @if ($proofs !=null)
-                                    @foreach ($proofs as $proof)
+                                <?php if($proofs !=null): ?>
+                                    <?php $__currentLoopData = $proofs; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $proof): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                     <li>
-                                        <span class="data-details-docs-title">{{$proof->description}}</span>
+                                        <span class="data-details-docs-title"><?php echo e($proof->description); ?></span>
                                         <div class="data-doc-item data-doc-item-lg">
                                             <div class="data-doc-image">
-                                        <img src="'{{$proof->file_url}}'" alt="proof of payment">
+                                        <img src="'<?php echo e($proof->file_url); ?>'" alt="proof of payment">
                                             </div>
                                             <ul class="data-doc-actions">
                                                 <li>
@@ -86,9 +84,9 @@
                                             </ul>
                                         </div>
                                     </li>
-                                    @endforeach
+                                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
 
-                                @endif
+                                <?php endif; ?>
 
 
                                 <!-- li -->
@@ -105,13 +103,13 @@
     </div>
 
 
-@endsection
+<?php $__env->stopSection(); ?>
 
-@section('scripts')
- @parent
+<?php $__env->startSection('scripts'); ?>
+ ##parent-placeholder-16728d18790deb58b3b8c1df74f06e536b532695##
 
- <script src="{{ asset('/tokenWiz/assets/js/scripta5f5.js?ver=102')}}"></script>
- <!-- <script src="{{ asset('/js/app/formsubmit.js')}}"></script> -->
+ <script src="<?php echo e(asset('/tokenWiz/assets/js/scripta5f5.js?ver=102')); ?>"></script>
+ <!-- <script src="<?php echo e(asset('/js/app/formsubmit.js')); ?>"></script> -->
   <script>
       $(function(){
           $("#openFundBtn").click(function(event){
@@ -119,5 +117,7 @@
           });
       });
   </script>
-@endsection
+<?php $__env->stopSection(); ?>
 
+
+<?php echo $__env->make('layouts.userLayout', \Illuminate\Support\Arr::except(get_defined_vars(), array('__data', '__path')))->render(); ?>
