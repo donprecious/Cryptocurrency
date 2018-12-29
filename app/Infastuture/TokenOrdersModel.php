@@ -49,15 +49,6 @@ class TokenOrdersModel{
 
     }
 
-    public  function GetOrders(){
-        try {
-            //code...
-            $transaction = tokenOrders::all();
-            return $transaction();
-        } catch (\Throwable $th) {
-            //throw $th;
-        }
-    }
 
 
     //Function checks if a USER HAS THAT ORDER
@@ -120,6 +111,34 @@ class TokenOrdersModel{
         }
     }
 
+    public function OrderHasUpload($orderid){
+        $order_confirmation = new \App\order_confirmations();
+        $order_confirms = $order_confirmation::where("order_id", $orderid)->get();
+        if(count($order_confirms)>0){
+            return true;
+        }
+        return false;
+    }
+    public function GetOrders(){
+        $order_confirmation = new tokenOrders();
+        $orders = $order_confirmation::get();
+        if(count($orders)){
+            return $orders;
+        }
+        return null;
+    }
 
+    public function GetPendingOrders(){
+        $order_confirmation = new tokenOrders();
+        $orders = $order_confirmation::where("status","PENDING")->get();
+        if(count($orders)){
+            return $orders;
+        }
+        return null;
+    }
+
+    public function GetOrdersWithUploads(){
+      //  $orders = $this->GetOrders()::where()
+    }
 
 }
