@@ -49,13 +49,11 @@ class UserController extends Controller
     public function orderConfirmation($orderid)
     {
         $userid = Auth::id();
-        $order = tokenOrders::with("order_confirmations")->where('user_id', $userid)->where("order_id", $orderid)->first();
-        foreach($order->order_confirmations as $i){
-            $file = $i->file_url;
-        }
+        $order = tokenOrders::where('user_id', $userid)->where("order_id", $orderid)->first();
+        $confirmations = App\order_confirmations::where("user_id",$userid)->where("order_id",$orderid)->get();
 
         if ($order != null) {
-            return view("user.orderConfirmation")->with("order", $order);
+            return view("user.orderConfirmation")->with("order", $order)->with("confirms",$confirmations);
         }
     }
 //    public function orderConfirmation($orderId){
