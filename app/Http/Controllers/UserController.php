@@ -233,7 +233,7 @@ class UserController extends Controller
         foreach($order->order_confirmations as $i){
 
         }
-        return view('User.PaymentOrder')
+        return view('User.paymentOrder')
         ->with('order',$order)->with("proofs", $confirms);
 
     }
