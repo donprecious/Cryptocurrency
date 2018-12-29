@@ -1,6 +1,4 @@
-@extends('layouts.userLayout')
-
-@section('content')
+<?php $__env->startSection('content'); ?>
 <div class="page-content">
         <div class="container">
             <div class="row">
@@ -9,7 +7,7 @@
                         <div class="card-innr">
                             <div class="token-balance token-balance-with-icon">
                                 <div class="token-balance-icon">
-                                <img src="{{asset('tokenWiz/images/logo-light-sm.png')}}" alt="logo">
+                                <img src="<?php echo e(asset('tokenWiz/images/logo-light-sm.png')); ?>" alt="logo">
                                 </div>
                                 <div class="token-balance-text">
                                     <h6 class="card-sub-title">Bitcoin Balance</h6>
@@ -44,7 +42,7 @@
                         <div class="row no-gutters height-100">
                             <div class="col-md-6 text-center">
                                 <div class="token-info">
-                                    <img class="token-info-icon" src="{{ asset('tokenWiz/images/logo-sm.png')}}" alt="logo-sm">
+                                    <img class="token-info-icon" src="<?php echo e(asset('tokenWiz/images/logo-sm.png')); ?>" alt="logo-sm">
                                     <div class="gaps-2x"></div>
                                     <h1 class="token-info-head text-light">1 ETH = 1000 TWZ</h1>
                                     <h5 class="token-info-sub">1 ETH = 254.05 USD</h5>
@@ -54,7 +52,7 @@
                                 <div class="token-info bdr-tl">
                                     <div>
                                             <h5 class="token-info-head text-light text-center">Account Balance</h5>
-                                            <h1 class="token-info-sub text-center">{{$balance}} USD</h1>
+                                            <h1 class="token-info-sub text-center"><?php echo e($balance); ?> USD</h1>
                                         <button id="openFundBtn" class="btn btn-primary">
                                             <em class="fas fa-money mr-3"></em>Add Fund
                                         </button>
@@ -94,40 +92,40 @@
                                     <!-- tr -->
                                 </thead>
                                 <!-- thead -->
-                                {{--
-                              --> --}}
+                                
 
 
 
 
                                 <tbody>
-                                  @foreach ($coins as $coin)
+                                  <?php $__currentLoopData = $coins; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $coin): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                   <tr>
                                           <td>
                                               <div class="d-flex align-items-center">
                                                   <div class="data-state ">
-                                                      <img class="img-fluid" src="{{$coin->iconUrl}}" width="20" height="20">
+                                                      <img class="img-fluid" src="<?php echo e($coin->iconUrl); ?>" width="20" height="20">
                                                   </div>
-                                                  <span class="lead">{{$coin->name}}</span>
+                                                  <span class="lead"><?php echo e($coin->name); ?></span>
                                               </div>
                                           </td>
                                           <td>
                                               <span>
 
                                                   <span>
-                                                          <span class="lead">{{ round($coin->price,2)}}</span>
-                                                          <span class="sub">{{$coin->symbol}}
+                                                          <span class="lead"><?php echo e(round($coin->price,2)); ?></span>
+                                                          <span class="sub"><?php echo e($coin->symbol); ?>
+
                                                               <em class="fas fa-info-circle" data-toggle="tooltip" data-placement="bottom"
-                                                                  data-original-title="1 {{$coin->symbol}} = {{ round($coin->price,2)}} USD"></em>
+                                                                  data-original-title="1 <?php echo e($coin->symbol); ?> = <?php echo e(round($coin->price,2)); ?> USD"></em>
                                                           </span>
                                                     </span>
                                           </td>
 
                                           <td>
-                                                <button data-symbol="{{$coin->symbol}}" data-quantity-left="0.1"  data-current-price-per-coin="{{$coin->price}}" class="dt-type-md badge badge-outline badge-success badge-md btnBuyTb">Order</button>
+                                                <button data-symbol="<?php echo e($coin->symbol); ?>" data-quantity-left="0.1"  data-current-price-per-coin="<?php echo e($coin->price); ?>" class="dt-type-md badge badge-outline badge-success badge-md btnBuyTb">Order</button>
                                           </td>
                                       </tr>
-                                  @endforeach
+                                  <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                 </tbody>
                                 <!-- tbody -->
                             </table>
@@ -145,12 +143,12 @@
                             <div class="input-item input-with-label">
                                     <label class="input-item-label">Select Token</label>
                                     <select class="select select-block select-bordered" id="selectCurrency">
-                                            @foreach ($coins as $coin)
-                                            <option value="{{$coin->symbol}}" data-price="{{$coin->price}}" data-symbol="{{$coin->symbol}}">{{$coin->symbol}} - {{$coin->name}}</option>
-                                            @endforeach
+                                            <?php $__currentLoopData = $coins; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $coin): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                            <option value="<?php echo e($coin->symbol); ?>" data-price="<?php echo e($coin->price); ?>" data-symbol="<?php echo e($coin->symbol); ?>"><?php echo e($coin->symbol); ?> - <?php echo e($coin->name); ?></option>
+                                            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                     </select>
                                     <!--
-                                        {{-- --}}
+                                        
                                           <select class="select select-block select-bordered" id="selectCurrency">
                                         <option value="option-one" data-price="3245.43958" data-symbol="BTC">BTC - BIT-COIN</option>
                                         <option value="option-one" data-price="49038.43958" data-symbol="LTC">Ltc - litecoin</option>
@@ -180,7 +178,7 @@
                                 <span class="note-text text-light">Amount calculated based current tokens price</span>
                             </div>
                             <div class="token-buy">
-                                <button type="button" id="btnBuyToken"  class="btn btn-primary btn-block">Buy Tokens <img id="img_buy" width="15" height="15" class="img-fluid hide-loader" src="{{asset('img/ajax/loading4.gif')}}"></button>
+                                <button type="button" id="btnBuyToken"  class="btn btn-primary btn-block">Buy Tokens <img id="img_buy" width="15" height="15" class="img-fluid hide-loader" src="<?php echo e(asset('img/ajax/loading4.gif')); ?>"></button>
                             </div>
                         </div>
                     </div>
@@ -275,7 +273,7 @@
                     </a>
                     <div class="popup-body">
                     <form action="/user/fundAccount" method="POST">
-                        @csrf
+                        <?php echo csrf_field(); ?>
                         <h3 class="popup-title text-center">Fund Account</h3>
 
                         <div class="input-item input-with-label">
@@ -332,10 +330,10 @@
                             <div class="input-item input-with-label">
                                 <label class="input-item-label text-exlight">Select Currency</label>
                                 <select class="input-bordered" id="selectCurrency2">
-                                    @foreach ($coins as $coin)
-                                    <option value="{{$coin->symbol}}" data-price="{{$coin->price}}" data-symbol="{{$coin->symbol}}">{{$coin->symbol}} - {{$coin->name}}</option>
+                                    <?php $__currentLoopData = $coins; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $coin): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                    <option value="<?php echo e($coin->symbol); ?>" data-price="<?php echo e($coin->price); ?>" data-symbol="<?php echo e($coin->symbol); ?>"><?php echo e($coin->symbol); ?> - <?php echo e($coin->name); ?></option>
 
-                                    @endforeach
+                                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
 
                               </select>
 
@@ -351,7 +349,7 @@
                                     <span class="input-note">amount to calculate the token for the cryptocurrency</span>
                                 </div>
                             <div class="gaps-1x"></div>
-                            <button class="btn btn-primary btn-block" id="btnBuyToken1">Buy Now <img id="img_buy" width="15" height="15" class="img-fluid hide-loader" src="{{asset('img/ajax/loading4.gif')}}"></button>
+                            <button class="btn btn-primary btn-block" id="btnBuyToken1">Buy Now <img id="img_buy" width="15" height="15" class="img-fluid hide-loader" src="<?php echo e(asset('img/ajax/loading4.gif')); ?>"></button>
                         </form>
                 </div>
             </div>
@@ -360,15 +358,15 @@
         <!-- .modal-dialog -->
     </div>
 
-@endsection
+<?php $__env->stopSection(); ?>
 
-@section('scripts')
- @parent
+<?php $__env->startSection('scripts'); ?>
+ ##parent-placeholder-16728d18790deb58b3b8c1df74f06e536b532695##
 
- <script src="{{ asset('/tokenWiz/assets/js/scripta5f5.js?ver=102')}}"></script>
+ <script src="<?php echo e(asset('/tokenWiz/assets/js/scripta5f5.js?ver=102')); ?>"></script>
 
- <!-- <script src="{{ asset('/js/app/formsubmit.js')}}"></script> -->
- <script src="{{ asset('/js/app/buyandsell.js')}}"></script>
+ <!-- <script src="<?php echo e(asset('/js/app/formsubmit.js')); ?>"></script> -->
+ <script src="<?php echo e(asset('/js/app/buyandsell.js')); ?>"></script>
   <script>
 
 
@@ -380,4 +378,6 @@
 
 
   </script>
-@endsection
+<?php $__env->stopSection(); ?>
+
+<?php echo $__env->make('layouts.userLayout', \Illuminate\Support\Arr::except(get_defined_vars(), array('__data', '__path')))->render(); ?>

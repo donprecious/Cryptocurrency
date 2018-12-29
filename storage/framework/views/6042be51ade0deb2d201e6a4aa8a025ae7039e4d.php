@@ -49,7 +49,7 @@
                                 <!-- .input-item -->
                                 <ul class="d-flex flex-wrap align-items-center guttar-30px">
                                     <li>
-                                    <a href="/user/orderConfirmation/<?php echo e($data->order_id); ?>" data-dismiss="modal" data-toggle="modal" data-target="#pay-review" class="btn btn-primary">Confirm Payment</a>
+                                    <a  href="/user/VerifyPayment/<?php echo e($data->order_id); ?>" class="btn btn-primary">Confirm Payment</a>
                                     </li>
                                     <li class="pdt-1x pdb-1x">
                                         <a href="#" data-dismiss="modal" data-toggle="modal" data-target="#pay-online" class="link link-primary">Make Online Payment</a>
@@ -73,7 +73,7 @@
                                 <em class="ti ti-files"></em>
                             </div>
                             <span class="status-text text-dark">Confirm your payment</span>
-                            <a href="kyc-form.html" class="btn btn-primary">Click here to make confrimation</a>
+                            <a href="/user/VerifyPayment/<?php echo e($data->order_id); ?>" class="btn btn-primary">Click here to make confrimation</a>
                         </div>
                     </div>
                 </div>

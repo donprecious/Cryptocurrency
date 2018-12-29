@@ -34,12 +34,10 @@ class UsdBalanceModel{
 
     public function GetUsdBalance($userid){
         $userBalance = usdBalance::where("user_id",$userid)->first();
-        // if(!$userBalance->isEmpty()){
-        //     return $userBalance->Balance_Usd;
-        // }
-        //
-        return $userBalance->Balance_usd;
-      //  return null;
+        if($userBalance){
+            return $userBalance->Balance_usd;
+        }
+       return null;
     }
 
     public function DeductUsdBalance($userid, $amount){

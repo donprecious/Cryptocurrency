@@ -7,7 +7,7 @@ use App\Infastuture\BuySellModel;
 use App\Infastuture\UsdBalanceModel;
 use App\Infastuture\CryptoBalanceModel;
 use App\Infastuture\TransancationsModels;
-
+use App\Infastuture\TokenOrdersModel;
 
 use App\tokenOrders;
 use Illuminate\Http\Request;
@@ -16,6 +16,7 @@ use Illuminate\Support\Facades\Auth;
 use JD\Cloudder\Facades\Cloudder;
 class UserController extends Controller
 {
+
     //
     public function __construct()
     {
@@ -24,10 +25,13 @@ class UserController extends Controller
 
     public function Index()
     {
+         $user_id = Auth::id();
         $coinRanking = new coinRanking();
         $coins = $coinRanking->GetMarketData();
+        $userBal = (new UsdBalanceModel())->GetUsdBalance($user_id);
         if($coins->status=="success"){
-            return view('User.index')->with("coins",$coins->data->coins);
+            return view('User.index')->with("coins",$coins->data->coins)
+            ->with("balance",  $userBal);
          }
       //  return view('user.index');
     }
@@ -211,5 +215,12 @@ class UserController extends Controller
             ]);
         }
         return view("User.history")->with("records",$rec);
+    }
+
+    public function paymentOrders($orderid){
+        $userid = Auth::id();
+        $tokenOrders = new  TokenOrdersModel();
+     //   $order = $tokenOrders->GetUserOrders($userid);
+        return view('User.PaymentOrders')->with('order',$order);
     }
 }
