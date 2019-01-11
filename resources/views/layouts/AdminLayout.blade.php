@@ -8,6 +8,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+
     <!-- Favicon icon -->
     <link rel="icon" type="image/png" sizes="16x16" href="{{asset('adminTempTemp/assets/images/favicon.png')}}">
     <title>Bebert - Multipurpose Admin Template</title>
@@ -17,6 +19,8 @@
     <!-- Custom CSS -->
     <link href="{{asset('adminTemp/assets/css/theme.css')}}" rel="stylesheet">
     <link href="{{asset('adminTemp/assets/css/responsive.css')}}" rel="stylesheet">
+    <link href="{{asset('css/site.css')}}" rel="stylesheet">
+
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -540,38 +544,9 @@
         <!-- ============================================================== -->
         <!-- Container fluid  -->
         <!-- ============================================================== -->
-        <div class="container-fluid">
-            <!-- ============================================================== -->
-            <!-- Bread crumb and right sidebar toggle -->
-            <!-- ============================================================== -->
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="page-breadcrumb">
-                        <h4 class="page-title">Dashboard</h4>
-                        <div class="d-flex align-items-center">
-                            <nav aria-label="breadcrumb">
-                                <ol class="breadcrumb">
-                                    <li class="breadcrumb-item"><a href="#">Home</a></li>
-                                    <li class="breadcrumb-item active">Library</li>
-                                </ol>
-                            </nav>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- ============================================================== -->
-            <!-- End Bread crumb and right sidebar toggle -->
-            <!-- ============================================================== -->
-            <!-- ============================================================== -->
-            <!-- Start Page Content -->
-            <!-- ============================================================== -->
-            @yield('content')
+        @yield('content')
 
 
-
-
-
-        </div>
         <!-- ============================================================== -->
         <!-- End Container fluid  -->
         <!-- ============================================================== -->
@@ -623,6 +598,7 @@
         <script src="{{asset('adminTemp/assets/libs/morris.js/morris.min.js')}}"></script>
         <script src="{{asset('adminTemp/assets/libs/DataTables/datatables.min.js')}}"></script>
         <script src="{{asset('adminTemp/assets/js/pages/dashboards/dashboard3.js')}}"></script>
+        <script src="{{asset('js/site.js')}}"></script>
 
     @show
 

@@ -168,7 +168,6 @@ class UserController extends Controller
         $myTokens =(new CryptoBalanceModel())->GetCryptoCurrency($userid);
         foreach($myTokens as $mytoken){
             $symbol = $mytoken->cryptocurrency_type;
-
             $coin = $coinApi->GetSpecificCurrencyData($symbol);
             $price = $coin->price;
             $token = [
@@ -230,11 +229,7 @@ class UserController extends Controller
         $tokenOrders = new  TokenOrdersModel();
         $order = $tokenOrders->GetUserOrder($userid,$orderid);
         $confirms= (new orderConfimationModel())->GetOrderVerifications($userid,$orderid);
-        foreach($order->order_confirmations as $i){
-
-        }
         return view('User.paymentOrder')
         ->with('order',$order)->with("proofs", $confirms);
-
     }
 }

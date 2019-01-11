@@ -6,14 +6,14 @@
             <div class="card content-area">
                 <div class="card-innr">
                     <div class="card-head d-flex justify-content-between align-items-center">
-                    <h4 class="card-title mb-0">KYC Details Order </h4>
+                        <h4 class="card-title mb-0">KYC Details</h4>
 
                     </div>
                     <div class="gaps-1-5x"></div>
                     <div class="data-details d-md-flex flex-wrap align-items-center justify-content-between">
                         <div class="fake-class">
-                            <span class="data-details-title">Submited By </span>
-                            <span class="data-details-info">{{$order->User->email}}</span>
+                            <span class="data-details-title">Submited By</span>
+                            <span class="data-details-info">UD102001</span>
                         </div>
                         <div class="fake-class">
                             <span class="data-details-title">Submited On</span>
@@ -80,12 +80,7 @@
                                     <span class="data-details-docs-title">Front Side</span>
                                     <div class="data-doc-item data-doc-item-lg">
                                         <div class="data-doc-image">
-                                            @foreach ($order->order_confirmations as $i)
-
-                                            <img src="{{$i->file_url}}" alt="passport">
-
-                                            @endforeach
-
+                                            <img src="{{asset('tokenWiz/images/passport-a-fornt.jpg')}}" alt="passport">
                                         </div>
                                         <ul class="data-doc-actions">
                                             <li>
@@ -97,7 +92,21 @@
                                     </div>
                                 </li>
                                 <!-- li -->
-
+                                <li>
+                                    <span class="data-details-docs-title">Back Side</span>
+                                    <div class="data-doc-item data-doc-item-lg">
+                                        <div class="data-doc-image">
+                                    <img src="{{asset('tokenWiz/images/passport-a-back.jpg')}}" alt="passport">
+                                        </div>
+                                        <ul class="data-doc-actions">
+                                            <li>
+                                                <a href="#">
+                                                    <em class="ti ti-import"></em>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </li>
                                 <!-- li -->
                             </ul>
                         </li>
@@ -111,7 +120,8 @@
         <!-- .container -->
     </div>
 
-@endsection
+
+    @endsection
 
 @section('scripts')
  @parent

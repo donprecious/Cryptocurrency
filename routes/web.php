@@ -47,8 +47,13 @@ Route::Post('/user/UploadPaymentDoc', "UserController@UploadPaymentDoc");
 
 
 //admin get controllers
-Route::get('/admin', 'adminController@dashboard');
-Route::get('/admin/confirmations','adminController@confirmations');
+Route::get('/admin', 'AdminController@dashboard');
+Route::get('/admin/paymentConfirmations','AdminController@PaymentConfirmations');
+
+
+//admin Post request
+Route::post('/admin/ApproveOrder', "AdminController@ApproveOrder");
+
 
 Route::post('/upload/images', [
     'uses'   =>  'ImageUploadController@uploadImages',

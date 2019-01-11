@@ -140,5 +140,19 @@ class TokenOrdersModel{
     public function GetOrdersWithUploads(){
       //  $orders = $this->GetOrders()::where()
     }
+    public function Find($orderid){
+        $order = tokenOrders::find($orderid);
+        if($order)return true;
+
+        return false;
+    }
+    public function ApproveOrder($orderid){
+
+            $order = tokenOrders::where("order_id",$orderid)->update(["status"=>"APPROVED"]);
+            return true;
+
+    }
+
+
 
 }

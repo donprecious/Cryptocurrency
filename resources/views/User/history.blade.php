@@ -224,7 +224,6 @@
                 if(tradetype=="Sell"){
                 //Sell the token
                 $(".sellBuyTxt").text("Sell");
-
                 $("#btnCoinTrade").attr('data-orderType',"Sell");
                 $("#txtQuanity").val($(this).attr("data-quantity"));
 
